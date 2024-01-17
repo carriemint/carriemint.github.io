@@ -5,7 +5,7 @@
     <meta name="viewport" content="initial-scale=1.0, width=device-width"/>
     <title>
       
-        网络编程 | 芋圆明天不困
+        网络编程及反射 | 芋圆明天不困
       
     </title>
     <meta name="description" content=""/>
@@ -87,10 +87,10 @@
   <article class="post-content">
     <div class="post-inner--toc">
       <div class="post-content__head">
-        <div class="post-title">网络编程</div>
+        <div class="post-title">网络编程及反射</div>
         <div class="post-info">
           
-  <a href="/tags/Java/" class="post-tag">#Java</a><a href="/tags/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/" class="post-tag">#网络编程</a><a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" class="post-tag">#计算机网络</a>
+  <a href="/tags/Java/" class="post-tag">#Java</a><a href="/tags/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/" class="post-tag">#网络编程</a><a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" class="post-tag">#计算机网络</a><a href="/tags/%E5%8F%8D%E5%B0%84/" class="post-tag">#反射</a>
 
 
           <span class="post-date">2024-01-15</span>
@@ -99,7 +99,7 @@
       
         <aside class="toc-outer">
           <div class="toc-title">目录</div>
-          <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80"><span class="post-toc-text">网络编程基础</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#IP"><span class="post-toc-text">IP</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%96%B9%E6%B3%95%E5%90%8D%EF%BD%9C%E8%AF%B4%E6%98%8E%EF%BD%9C-%E2%80%94-%E2%80%94-static-InetAddress-getByName-String-host-%E7%A1%AE%E5%AE%9A%E4%B8%BB%E6%9C%BA%E5%90%8D%E7%A7%B0%E7%9A%84IP%E5%9C%B0%E5%9D%80%E3%80%82%E4%B8%BB%E6%9C%BA%E5%90%8D%E7%A7%B0%E5%8F%AF%E4%BB%A5%E6%98%AF%E6%9C%BA%E5%99%A8%E5%90%8D%E7%A7%B0%EF%BC%8C%E4%B9%9F%E5%8F%AF%E4%BB%A5%E6%98%AFIP%E5%9C%B0%E5%9D%80-String-getHostName-%E8%8E%B7%E5%8F%96%E6%AD%A4IP%E5%9C%B0%E5%9D%80%E7%9A%84%E4%B8%BB%E6%9C%BA%E5%90%8D-String-getHostAddress-%E8%BF%94%E5%9B%9E%E6%96%87%E6%9C%AC%E6%98%BE%E7%A4%BA%E4%B8%AD%E7%9A%84IP%E5%9C%B0%E5%9D%80%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="post-toc-text">|方法名｜说明｜|—|—||static InetAddress getByName(String host) | 确定主机名称的IP地址。主机名称可以是机器名称，也可以是IP地址 ||String getHostName()| 获取此IP地址的主机名||String getHostAddress()| 返回文本显示中的IP地址字符串|</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AB%AF%E5%8F%A3%E5%8F%B7"><span class="post-toc-text">端口号</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%8D%8F%E8%AE%AE"><span class="post-toc-text">协议</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#UDP%E5%8D%8F%E8%AE%AE%EF%BC%88%E7%94%A8%E6%88%B7%E6%95%B0%E6%8D%AE%E6%8A%A5%E5%8D%8F%E8%AE%AE%EF%BC%89"><span class="post-toc-text">UDP协议（用户数据报协议）</span></a></li></ol></li></ol></li></ol>
+          <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80"><span class="post-toc-text">网络编程基础</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#IP"><span class="post-toc-text">IP</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AB%AF%E5%8F%A3%E5%8F%B7"><span class="post-toc-text">端口号</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%8D%8F%E8%AE%AE"><span class="post-toc-text">协议</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#UDP%E5%8D%8F%E8%AE%AE%EF%BC%88%E7%94%A8%E6%88%B7%E6%95%B0%E6%8D%AE%E6%8A%A5%E5%8D%8F%E8%AE%AE%EF%BC%89"><span class="post-toc-text">UDP协议（用户数据报协议）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%8F%91%E9%80%81%E6%95%B0%E6%8D%AE"><span class="post-toc-text">发送数据</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%8E%A5%E6%94%B6%E6%95%B0%E6%8D%AE"><span class="post-toc-text">接收数据</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%B8%89%E7%A7%8D%E9%80%9A%E4%BF%A1%E6%96%B9%E5%BC%8F%EF%BC%88%E5%8D%95%E6%92%AD%EF%BC%8C%E7%BB%84%E6%92%AD%EF%BC%8C%E5%B9%BF%E6%92%AD%EF%BC%89"><span class="post-toc-text">三种通信方式（单播，组播，广播）</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#TCP%E5%8D%8F%E8%AE%AE"><span class="post-toc-text">TCP协议</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%BB%83%E4%B9%A0"><span class="post-toc-text">练习</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6"><span class="post-toc-text">上传文件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6%E5%90%8D%E9%87%8D%E5%A4%8D%E7%9A%84%E9%97%AE%E9%A2%98"><span class="post-toc-text">上传文件名重复的问题</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%A4%9A%E7%BA%BF%E7%A8%8B%EF%BC%88%E8%83%BD%E6%8E%A5%E5%8F%97%E5%A4%9A%E7%94%A8%E6%88%B7%E4%B8%8A%E4%BC%A0%E7%9A%84%E5%9B%BE%E7%89%87%EF%BC%89"><span class="post-toc-text">多线程（能接受多用户上传的图片）</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%8F%8D%E5%B0%84"><span class="post-toc-text">反射</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%80%BB%E7%BB%93"><span class="post-toc-text">总结</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86"><span class="post-toc-text">动态代理</span></a></li></ol>
           <a href="#" class="toc-top">回到顶部</a>
         </aside>
       
@@ -134,34 +134,38 @@
 <li>127.0.0.1：是回送地址，可以代表本机地址，一般用来测试使用<br>注意：已知我自己电脑的ip，和127.0.0.1是不一样的（每个路由器分配的ip不一定一样，但回送地址一定是本机）</li>
 </ul>
 </li>
-<li><p>InetAddress类（表示ip的对象，判断本机使用的ip版本）</p>
+<li><p>InetAddress类（表示ip的对象，判断本机使用的ip版本）<br>|方法名｜说明｜<br>|—|—|<br>|static InetAddress getByName(String host) | 确定主机名称的IP地址。主机名称可以是机器名称，也可以是IP地址 |<br>|String getHostName()| 获取此IP地址的主机名|<br>|String getHostAddress()| 返回文本显示中的IP地址字符串|</p>
 </li>
-<li></li>
 </ul>
-<h2 id="方法名｜说明｜-—-—-static-InetAddress-getByName-String-host-确定主机名称的IP地址。主机名称可以是机器名称，也可以是IP地址-String-getHostName-获取此IP地址的主机名-String-getHostAddress-返回文本显示中的IP地址字符串"><a href="#方法名｜说明｜-—-—-static-InetAddress-getByName-String-host-确定主机名称的IP地址。主机名称可以是机器名称，也可以是IP地址-String-getHostName-获取此IP地址的主机名-String-getHostAddress-返回文本显示中的IP地址字符串" class="headerlink" title="|方法名｜说明｜|—|—||static InetAddress getByName(String host) | 确定主机名称的IP地址。主机名称可以是机器名称，也可以是IP地址 ||String getHostName()| 获取此IP地址的主机名||String getHostAddress()| 返回文本显示中的IP地址字符串|"></a>|方法名｜说明｜<br>|—|—|<br>|static InetAddress getByName(String host) | 确定主机名称的IP地址。主机名称可以是机器名称，也可以是IP地址 |<br>|String getHostName()| 获取此IP地址的主机名|<br>|String getHostAddress()| 返回文本显示中的IP地址字符串|</h2><h2 id="端口号"><a href="#端口号" class="headerlink" title="端口号"></a>端口号</h2><p>两个字节表示的整数<br><img src="https://dzc2000919.oss-cn-shanghai.aliyuncs.com/zyx_images/202401152109792.png"></p>
+<h2 id="端口号"><a href="#端口号" class="headerlink" title="端口号"></a>端口号</h2><p>两个字节表示的整数<br><img src="https://dzc2000919.oss-cn-shanghai.aliyuncs.com/zyx_images/202401152109792.png"></p>
 <h2 id="协议"><a href="#协议" class="headerlink" title="协议"></a>协议</h2><ul>
 <li><p>UDP协议(用户数据报协议)</p>
 <ul>
-<li>UDP是无连接通信协议，即在数据传输时，数据的发送端和接收端不建立逻辑连接。简单来说，当一台计算机向另外一台计算机发送数据时，发送端不会确认接收端是否存在，就会发出数据，同样接收端在收到数据时，也不会向发送端反馈是否收到数据。</li>
-<li>由于使用UDP协议消耗系统资源小，通信效率高，所以通常都会用于音频、视频和普通数据的传输</li>
-<li>例如视频会议通常采用UDP协议，因为这种情况即使偶尔丢失一两个数据包，也不会对接收结果产生太大影响。但是在使用UDP协议传送数据时，由于UDP的面向无连接性，不能保证数据的完整性，因此在传输重要数据时不建议使用UDP协议</li>
+<li>UDP是面向<strong>无连接通信协议</strong>，即在数据传输时，数据的发送端和接收端不建立逻辑连接。（发送端不会确认接收端是否存在，就会发出数据，同样接收端在收到数据时，也不会向发送端反馈是否收到数据。）</li>
+<li>由于使用UDP协议消耗系统资源小，<strong>通信效率高</strong>，所以通常都会用于音频、视频和普通数据的传输；数据不安全容易丢失数据<br>（例如<strong>视频会议</strong>通常采用UDP协议，因为这种情况即使偶尔丢失一两个数据包，也不会对接收结果产生太大影响。但是在使用UDP协议传送数据时，由于UDP的面向无连接性，不能保证数据的完整性，因此在传输重要数据时不建议使用UDP协议）</li>
 </ul>
 </li>
 <li><p>TCP协议</p>
 <ul>
-<li><p>传输控制协议 (Transmission Control Protocol)</p>
-</li>
-<li><p>TCP协议是面向连接的通信协议，即传输数据之前，在发送端和接收端建立逻辑连接，然后再传输数据，它提供了两台计算机之间可靠无差错的数据传输。在TCP连接中必须要明确客户端与服务器端，由客户端向服务端发出连接请求，每次连接的创建都需要经过“三次握手”</p>
-</li>
-<li></li>
+<li><strong>传输控制协议</strong> (Transmission Control Protocol)</li>
+<li>TCP协议是<strong>面向连接</strong>的通信协议，即传输数据之前，在发送端和接收端建立逻辑连接，然后再传输数据，它提供了两台计算机之间<strong>可靠无差错</strong>的数据传输。在TCP连接中必须要明确客户端与服务器端，由客户端向服务端发出连接请求，每次连接的创建都需要经过“<strong>三次握手</strong>”</li>
 </ul>
 </li>
 </ul>
-<h3 id="UDP协议（用户数据报协议）"><a href="#UDP协议（用户数据报协议）" class="headerlink" title="UDP协议（用户数据报协议）"></a>UDP协议（用户数据报协议）</h3><ul>
-<li><p>Java中的UDP通信</p>
+<h2 id="UDP协议（用户数据报协议）"><a href="#UDP协议（用户数据报协议）" class="headerlink" title="UDP协议（用户数据报协议）"></a>UDP协议（用户数据报协议）</h2><ul>
+<li>Java中的UDP通信<ul>
+<li>UDP协议是一种不可靠的网络协议，它在通信的两端各建立一个Socket对象，但是这两个Socket只是发送，接收数据的对象（因此对于基于UDP协议的通信双方而言，没有所谓的客户端和服务器的概念）</li>
+<li>Java提供了<strong>DatagramSocket类</strong>作为基于UDP协议的Socket</li>
+</ul>
+</li>
+</ul>
+<h3 id="发送数据"><a href="#发送数据" class="headerlink" title="发送数据"></a>发送数据</h3><ul>
+<li><p>发送数据的步骤</p>
 <ul>
-<li>UDP协议是一种不可靠的网络协议，它在通信的两端各建立一个Socket对象，但是这两个Socket只是发送，接收数据的对象，因此对于基于UDP协议的通信双方而言，没有所谓的客户端和服务器的概念</li>
-<li>Java提供了DatagramSocket类作为基于UDP协议的Socket</li>
+<li>创建发送端的Socket对象(DatagramSocket)</li>
+<li>创建数据，并把数据打包</li>
+<li>调用DatagramSocket对象的方法发送数据</li>
+<li>释放资源（关闭发送端）</li>
 </ul>
 </li>
 <li><p>构造方法</p>
@@ -174,7 +178,7 @@
 </thead>
 <tbody><tr>
 <td>DatagramSocket()</td>
-<td>创建数据报套接字并将其绑定到本机地址上的任何可用端口</td>
+<td>创建数据报套接字并将其绑定到本机地址上的任何可用端口（可以指定）</td>
 </tr>
 <tr>
 <td>DatagramPacket(byte[] buf,int len,InetAddress add,int port)</td>
@@ -198,21 +202,246 @@
 <td>void close()</td>
 <td>关闭数据报套接字</td>
 </tr>
+</tbody></table>
+</li>
+</ul>
+<h3 id="接收数据"><a href="#接收数据" class="headerlink" title="接收数据"></a>接收数据</h3><ul>
+<li><p>接收数据的步骤</p>
+<ul>
+<li>创建接收端的Socket对象(DatagramSocket)（需要绑定端口，<strong>数据包中的端口一致</strong>）</li>
+<li>创建一个数据包，用于接收数据</li>
+<li>调用DatagramSocket对象的方法接收数据</li>
+<li>解析数据包，并把数据在控制台显示</li>
+<li>关闭接收端，释放资源</li>
+</ul>
+</li>
+<li><p>构造方法</p>
+<table>
+<thead>
 <tr>
-<td>void receive(DatagramPacket p)</td>
-<td>从此套接字接受数据报包</td>
+<th>方法名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>DatagramSocket()</td>
+<td>创建数据报套接字并将其绑定到本机地址上的任何可用端口（可以指定）</td>
+</tr>
+<tr>
+<td>DatagramPacket(byte[] buf, int len)</td>
+<td>创建一个DatagramPacket用于接收长度为len的数据包</td>
 </tr>
 </tbody></table>
 </li>
-<li><p>发送数据的步骤</p>
-<ul>
-<li>创建发送端的Socket对象(DatagramSocket)</li>
-<li>创建数据，并把数据打包</li>
-<li>调用DatagramSocket对象的方法发送数据</li>
-<li>关闭发送端</li>
-</ul>
+<li><p>相关方法</p>
+<table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>void receive(DatagramPacket p)</td>
+<td>从此套接字接受数据报包（会空等，阻塞的，直到接收到数据）</td>
+</tr>
+<tr>
+<td>byte[]  getData()</td>
+<td>返回数据缓冲区</td>
+</tr>
+<tr>
+<td>int  getLength()</td>
+<td>返回要发送的数据的长度或接收的数据的长度</td>
+</tr>
+</tbody></table>
+<h3 id="三种通信方式（单播，组播，广播）"><a href="#三种通信方式（单播，组播，广播）" class="headerlink" title="三种通信方式（单播，组播，广播）"></a>三种通信方式（单播，组播，广播）</h3></li>
+<li><p>单播</p>
+<p>单播用于两个主机之间的端对端通信</p>
+</li>
+<li><p>组播<br>组播用于对一组特定的主机进行通信<br>组播地址：224.0.0.0～239.255.255.255，其中224.0.0.0～224.0.0.255为预留的组播地址<br> &#x2F;&#x2F; 3. 把当前计算机绑定一个组播地址,表示添加到这一组中.<br>ms.joinGroup(InetAddress.getByName(“224.0.1.0”));<br>创建接收端Socket对象(MulticastSocket)<br>调用DatagramSocket对象的方法发送数据(在单播中,这里是发给指定IP的电脑但是在组播当中,这里是发给组播地址)</p>
+</li>
+<li><p>广播（255.255.255.255）<br>广播用于一个主机对整个局域网上所有主机上的数据通信</p>
 </li>
 </ul>
+<h2 id="TCP协议"><a href="#TCP协议" class="headerlink" title="TCP协议"></a>TCP协议</h2><p>Java为客户端提供了Socket类，为服务器端提供了ServerSocket类</p>
+<ul>
+<li><p>构造方法</p>
+<table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Socket(InetAddress address,int port)</td>
+<td>创建流套接字并将其连接到指定IP指定端口号</td>
+</tr>
+<tr>
+<td>Socket(String host, int port)</td>
+<td>创建流套接字并将其连接到指定主机上的指定端口号</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>相关方法</p>
+<table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>InputStream  getInputStream()</td>
+<td>返回此套接字的输入流</td>
+</tr>
+<tr>
+<td>OutputStream getOutputStream()</td>
+<td>返回此套接字的输出流</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<p>中文乱码，用字符流读取：  InputStreamReader isr &#x3D; new InputStreamReader(is);<br>用缓冲流，增加效率：BufferedReader br &#x3D; new BufferedReader(isr);</p>
+<p>注意事项：</p>
+<ol>
+<li>accept方法是阻塞的,作用就是等待客户端连接</li>
+<li>客户端创建对象并连接服务器,此时是通过三次握手协议,保证跟服务器之间的连接</li>
+<li>针对客户端来讲,是往外写的,所以是输出流<br>针对服务器来讲,是往里读的,所以是输入流</li>
+<li>read方法也是阻塞的</li>
+<li>客户端在关流的时候,还多了一个往服务器写结束标记的动作</li>
+<li>最后一步断开连接,通过<strong>四次挥手协议</strong>保证连接终止</li>
+</ol>
+<p><img src="https://dzc2000919.oss-cn-shanghai.aliyuncs.com/zyx_images/202401171822910.png"></p>
+<p><img src="https://dzc2000919.oss-cn-shanghai.aliyuncs.com/zyx_images/202401171824483.png"></p>
+<p>保证连接断开，且数据处理完毕<br><img src="https://dzc2000919.oss-cn-shanghai.aliyuncs.com/zyx_images/202401171824656.png"></p>
+<h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><h3 id="上传文件"><a href="#上传文件" class="headerlink" title="上传文件"></a>上传文件</h3><ul>
+<li>案例需求<br>客户端：数据来自于本地文件，接收服务器反馈<br>服务器：接收到的数据写入本地文件，给出反馈</li>
+<li>案例分析<ul>
+<li>创建客户端对象，创建输入流对象指向文件，每读一次数据就给服务器输出一次数据，输出结束后使用shutdownOutput()方法告知服务端传输结束</li>
+<li>创建服务器对象，创建输出流对象指向文件，每接受一次数据就使用输出流输出到文件中，传输结束后。使用输出流给客户端反馈信息</li>
+<li>客户端接受服务端的回馈信息</li>
+</ul>
+</li>
+<li>相关方法<table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>void shutdownInput()</td>
+<td>将此套接字的输入流放置在“流的末尾”</td>
+</tr>
+<tr>
+<td>void shutdownOutput()</td>
+<td>禁止用此套接字的输出流</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<p><img src="https://dzc2000919.oss-cn-shanghai.aliyuncs.com/zyx_images/202401171832971.png"></p>
+<h3 id="上传文件名重复的问题"><a href="#上传文件名重复的问题" class="headerlink" title="上传文件名重复的问题"></a>上传文件名重复的问题</h3><p>UUID，通用唯一标识符的类<br>UUID.randomUUID（）：获得随机的<br>如果不要横杠：<code>UUID.randomUUID().toString().replace(&quot;-&quot;,&quot;&quot;)</code></p>
+<h3 id="多线程（能接受多用户上传的图片）"><a href="#多线程（能接受多用户上传的图片）" class="headerlink" title="多线程（能接受多用户上传的图片）"></a>多线程（能接受多用户上传的图片）</h3><p>改写成多线程</p>
+<h1 id="反射"><a href="#反射" class="headerlink" title="反射"></a>反射</h1><p><strong>专业的解释（允许对成员变量，成员方法和构造方法进行编程访问）：</strong><br>在运行状态中，都能够知道这个类的所有属性（成员变量）和方法（构造方法和成员方法）；<br>对于任意一个对象，都能够调用它的任意属性和方法；<br><strong>动态获取信息</strong>以及<strong>动态调用对象方法</strong>的功能称为反射</p>
+<p>​	<strong>通俗的理解：（掌握）</strong></p>
+<ul>
+<li>利用<strong>反射</strong>创建的对象<strong>可以无视修饰符</strong>调用类里面的内容</li>
+<li>可以跟<strong>配置文件结合起来使用</strong>，把要创建的对象信息和方法写在配置文件中。<br>此时当需求变更的时候<strong>不需要修改代码</strong>，只要<strong>修改配置文件</strong>即可。</li>
+</ul>
+<p>反射都是从<strong>class字节码文件</strong>中获取的内容</p>
+<p><img src="https://dzc2000919.oss-cn-shanghai.aliyuncs.com/zyx_images/202401171950772.png"></p>
+<ul>
+<li>获取class字节码文件的对象<ul>
+<li>Class这个类里面的静态方法forName（“全类名”）：Class.forName(“全类名”);<strong>（最常用）</strong>（右键类名，然后copy引用全类名，全类名 &#x3D; 包名 + 类名）</li>
+<li>通过class属性获取：类名.class（当成参数传递）</li>
+<li>通过对象获取字节码文件对象：对象.class</li>
+</ul>
+</li>
+<li>利用反射如何获取构造方法（Constructor）（创建对象）</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Constructor&lt;?&gt;[] getConstructors() 获得所有的构造（public修饰的数组）</td>
+<td></td>
+</tr>
+<tr>
+<td>Constructor&lt;?&gt;[] getDeclaredConstructors()</td>
+<td>获得所有的构造（包含private修饰）(能看到，但不能用，不能构造对象)</td>
+</tr>
+<tr>
+<td>Constructor<T> getConstructor(Class&lt;?&gt;… parameterTypes)</td>
+<td>获取指定构造（只能public修饰）</td>
+</tr>
+<tr>
+<td>Constructor<T> getDeclaredConstructor(Class&lt;?&gt;… parameterTypes)</td>
+<td>获取指定构造（包含private修饰）</td>
+</tr>
+</tbody></table>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//1.获取整体的字节码文件对象</span><br><span class="line">Class clazz = Class.forName(&quot;com.itheima.a02reflectdemo1.Student&quot;);</span><br><span class="line">//2.获取有参构造方法</span><br><span class="line">Constructor con = clazz.getDeclaredConstructor(String.class, int.class);</span><br><span class="line">//3.临时修改构造方法的访问权限（暴力反射）</span><br><span class="line">con.setAccessible(true);</span><br><span class="line">//4.直接创建对象</span><br><span class="line">Student stu = (Student) con.newInstance(&quot;zhangsan&quot;, 23);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>利用反射如何获取成员变量（Field）（赋值，获取值）</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Field[] getFields()</td>
+<td>返回所有成员变量对象的数组（只能拿public的）</td>
+</tr>
+<tr>
+<td>Field[] getDeclaredFields()</td>
+<td>返回所有成员变量对象的数组，存在就能拿到</td>
+</tr>
+<tr>
+<td>Field getField(String name)</td>
+<td>返回单个成员变量对象（只能拿public的）</td>
+</tr>
+<tr>
+<td>Field getDeclaredField(String name)</td>
+<td>返回单个成员变量对象，存在就能拿到</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>void set(Object obj, Object value)</td>
+<td>赋值</td>
+</tr>
+<tr>
+<td>Object get(Object obj)</td>
+<td>获取值</td>
+</tr>
+</tbody></table>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">//1.获取class对象</span><br><span class="line">        Class clazz = Class.forName(&quot;com.itheima.reflectdemo.Student&quot;);</span><br><span class="line"></span><br><span class="line">        //2.获取name成员变量</span><br><span class="line">        //field就表示name这个属性的对象</span><br><span class="line">        Field field = clazz.getDeclaredField(&quot;name&quot;);</span><br><span class="line">        //临时修饰他的访问权限</span><br><span class="line">        field.setAccessible(true);</span><br><span class="line"></span><br><span class="line">        //3.设置(修改)name的值</span><br><span class="line">        //参数一：表示要修改哪个对象的name？</span><br><span class="line">        //参数二：表示要修改为多少？</span><br><span class="line">        field.set(s,&quot;wangwu&quot;);</span><br><span class="line"></span><br><span class="line">        //3.获取name的值</span><br><span class="line">        //表示我要获取这个对象的name的值</span><br><span class="line">        String result = (String)field.get(s);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<ul>
+<li>利用反射如何获取成员方法（Method）（运行）<br>获取成员方法同上<br>getMethods()(可以获取父类中的所有公共方法)<br>getDeclaredMethods()（不能回去父类的）</li>
+</ul>
+<p> Object invoke(Object obj, Object… args) ：运行方法<br>参数一：用obj对象调用该方法<br>参数二：调用方法的传递的参数（如果没有就不写）<br>返回值：方法的返回值（如果没有就不写）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">//1.获取字节码文件对象</span><br><span class="line">        Class clazz = Class.forName(&quot;com.itheima.a02reflectdemo1.Student&quot;);</span><br><span class="line">		</span><br><span class="line">        //2.获取一个对象</span><br><span class="line">        //需要用这个对象去调用方法</span><br><span class="line">        Student s = new Student();</span><br><span class="line">        </span><br><span class="line">        //3.获取一个指定的方法</span><br><span class="line">        //参数一：方法名</span><br><span class="line">        //参数二：参数列表，如果没有可以不写</span><br><span class="line">        Method eatMethod = clazz.getMethod(&quot;eat&quot;,String.class);</span><br><span class="line">        </span><br><span class="line">        //运行</span><br><span class="line">        //参数一：表示方法的调用对象</span><br><span class="line">        //参数二：方法在运行时需要的实际参数</span><br><span class="line">        //注意点：如果方法有返回值，那么需要接收invoke的结果</span><br><span class="line">        //如果方法没有返回值，则不需要接收</span><br><span class="line">        String result = (String) eatMethod.invoke(s, &quot;重庆小面&quot;);</span><br><span class="line">        System.out.println(result);</span><br></pre></td></tr></table></figure>
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p><img src="https://dzc2000919.oss-cn-shanghai.aliyuncs.com/zyx_images/202401172031553.png"></p>
+<h1 id="动态代理"><a href="#动态代理" class="headerlink" title="动态代理"></a>动态代理</h1><p><strong>优点：无侵入式的给方法增强额外的功能</strong><br>三要素：<br>1，真正干活的对象<br>2，代理对象<br>3，利用代理调用方法<br>注意：代理可以增强或者拦截的方法都在接口中，接口需要写在newProxyInstance的第二个参数里。</p>
+<p><img src="https://dzc2000919.oss-cn-shanghai.aliyuncs.com/zyx_images/202401172040900.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">/* java.lang.reflect.Proxy类：提供了为对象产生代理对象的方法：</span><br><span class="line">       public static Object newProxyInstance(ClassLoader loader, Class&lt;?&gt;[] interfaces, InvocationHandler h)</span><br><span class="line">       参数一：用于指定用哪个类加载器，去加载生成的代理类</span><br><span class="line">       参数二：指定接口，这些接口用于指定生成的代理长什么，也就是有哪些方法</span><br><span class="line">       参数三：用来指定生成的代理对象要干什么事情*/</span><br></pre></td></tr></table></figure>
+
+<p>源代码（java文件，class字节码文件）在硬盘中<br>类加载器：需要一个xx把class的字节码文件加载在内存中</p>
 
       </div>
     </div>
@@ -257,7 +486,7 @@
     
       <div class="related-post">
   <div class="related__head">
-  <a href="/tags/Java/" class="post-tag">#Java</a><a href="/tags/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/" class="post-tag">#网络编程</a><a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" class="post-tag">#计算机网络</a>
+  <a href="/tags/Java/" class="post-tag">#Java</a><a href="/tags/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/" class="post-tag">#网络编程</a><a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" class="post-tag">#计算机网络</a><a href="/tags/%E5%8F%8D%E5%B0%84/" class="post-tag">#反射</a>
 
 </div>
   <div class="realated__body">
