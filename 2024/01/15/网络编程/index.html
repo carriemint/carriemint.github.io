@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf8"/>
+    <meta name="viewport" content="initial-scale=1.0, width=device-width"/>
+    <title>
+      
+        网络编程 | 芋圆明天不困
+      
+    </title>
+    <meta name="description" content=""/>
+    <meta name="keywords" content=""/>
+    
+      <link rel="apple-touch-icon"
+            sizes="180x180"
+            href="/images/apple-touch-icon.png"/>
+    
+    
+      <link rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="/images/favicon-32x32.png"/>
+    
+    
+      <link rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="/images/favicon-16x16.png"/>
+    
+    
+      <link rel="mask-icon"
+            href="/images/logo.svg"
+            color=""/>
+    
+    
+    
+      
+  <style>
+    @font-face {
+        font-family:sourceHanSerif;
+        src: url(/font/regular.ttf);
+        font-weight: regular;
+    }
+  </style>
+
+  <style>
+    @font-face {
+        font-family:sourceHanSerif;
+        src: url(/font/bold.ttf);
+        font-weight: bold;
+    }
+  </style>
+
+
+    
+    <link rel="stylesheet"
+          type="text/css"
+          href='/css/layout.css'/>
+    
+    
+  <link rel="stylesheet" type="text/css" href="/css/post.css" />
+  
+
+  <meta name="generator" content="Hexo 6.3.0"></head>
+  <body>
+    <div class="head">
+      <div class="nav">
+        <a href='/' class="nav-logo">
+          <img alt="logo" height="60px" width="60px" src="/images/logo.svg"/>
+        </a>
+        <input id="navBtn" type="checkbox"/>
+        <div class="nav-menu">
+          
+            
+              <a class="nav-menu-item" href="/CS">技术</a>
+            
+              <a class="nav-menu-item" href="/Others">杂七杂八</a>
+            
+          
+          
+        </div>
+        <label class="nav-btn" for="navBtn"></label>
+      </div>
+    </div>
+    <div class="body">
+      
+  <article class="post-content">
+    <div class="post-inner--toc">
+      <div class="post-content__head">
+        <div class="post-title">网络编程</div>
+        <div class="post-info">
+          
+  <a href="/tags/Java/" class="post-tag">#Java</a><a href="/tags/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/" class="post-tag">#网络编程</a><a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" class="post-tag">#计算机网络</a>
+
+
+          <span class="post-date">2024-01-15</span>
+        </div>
+      </div>
+      
+        <aside class="toc-outer">
+          <div class="toc-title">目录</div>
+          <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80"><span class="post-toc-text">网络编程基础</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#IP"><span class="post-toc-text">IP</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%96%B9%E6%B3%95%E5%90%8D%EF%BD%9C%E8%AF%B4%E6%98%8E%EF%BD%9C-%E2%80%94-%E2%80%94-static-InetAddress-getByName-String-host-%E7%A1%AE%E5%AE%9A%E4%B8%BB%E6%9C%BA%E5%90%8D%E7%A7%B0%E7%9A%84IP%E5%9C%B0%E5%9D%80%E3%80%82%E4%B8%BB%E6%9C%BA%E5%90%8D%E7%A7%B0%E5%8F%AF%E4%BB%A5%E6%98%AF%E6%9C%BA%E5%99%A8%E5%90%8D%E7%A7%B0%EF%BC%8C%E4%B9%9F%E5%8F%AF%E4%BB%A5%E6%98%AFIP%E5%9C%B0%E5%9D%80-String-getHostName-%E8%8E%B7%E5%8F%96%E6%AD%A4IP%E5%9C%B0%E5%9D%80%E7%9A%84%E4%B8%BB%E6%9C%BA%E5%90%8D-String-getHostAddress-%E8%BF%94%E5%9B%9E%E6%96%87%E6%9C%AC%E6%98%BE%E7%A4%BA%E4%B8%AD%E7%9A%84IP%E5%9C%B0%E5%9D%80%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="post-toc-text">|方法名｜说明｜|—|—||static InetAddress getByName(String host) | 确定主机名称的IP地址。主机名称可以是机器名称，也可以是IP地址 ||String getHostName()| 获取此IP地址的主机名||String getHostAddress()| 返回文本显示中的IP地址字符串|</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AB%AF%E5%8F%A3%E5%8F%B7"><span class="post-toc-text">端口号</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%8D%8F%E8%AE%AE"><span class="post-toc-text">协议</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#UDP%E5%8D%8F%E8%AE%AE%EF%BC%88%E7%94%A8%E6%88%B7%E6%95%B0%E6%8D%AE%E6%8A%A5%E5%8D%8F%E8%AE%AE%EF%BC%89"><span class="post-toc-text">UDP协议（用户数据报协议）</span></a></li></ol></li></ol></li></ol>
+          <a href="#" class="toc-top">回到顶部</a>
+        </aside>
+      
+      <div class="post-content__body">
+        
+          <div class="post-gallery">
+            
+          </div>
+        
+        <h1 id="网络编程基础"><a href="#网络编程基础" class="headerlink" title="网络编程基础"></a>网络编程基础</h1><p>网络编程三要素：</p>
+<ul>
+<li><strong>IP地址（设备的标识）</strong><br><strong>设备在网络中的地址，唯一标识。</strong></li>
+<li><strong>端口（应用程序的标识）</strong><br>本质上是<strong>两个应用程序的通信</strong>，端口号可以唯一标识设备中的应用程序。</li>
+<li><strong>协议（规则）</strong><br><strong>数据在网络中传输的规则</strong>，对数据的传输格式、传输速率、传输步骤等做了统一规定，通信双方必须同时遵守才能完成数据交换。常见的协议有UDP协议、TCP协议、http、https、ftp</li>
+</ul>
+<h2 id="IP"><a href="#IP" class="headerlink" title="IP"></a>IP</h2><p>IP地址：是网络中设备的唯一标识</p>
+<p>IP地址分为两大类：</p>
+<ul>
+<li>IPv4（互联网通信协议第4版）<br>是给每个连接在网络上的主机分配一个32bit地址。按照TCP&#x2F;IP规定，IP地址用二进制来表示，每个IP地址长32bit，也就是4个字节。例如一个采用二进制形式的IP地址是“11000000 10101000 00000001 01000010”，十进制形势的IP地址可以表示为“192.168.1.66”。</li>
+<li>IPv6：网络地址资源有限，扩大地址空间，IPv6重新定义地址空间，采用128位地址长度，每16个字节一组，分成8组十六进制数，解决了网络地址资源数量不够的问题（表示成16进制，使用冒号：隔开，连续的两个冒号表示都是压缩0）</li>
+</ul>
+<p>IPv4地址分类形式：<br>公网地址（万维网使用）<br>私有地址（局域网使用，192.168开头）：为组织机构内部使用，可以节省ip，共有一个公网ip<br>节省ip：IPv6和局域网</p>
+<ul>
+<li><p>DOS常用命令：</p>
+<ul>
+<li>ipconfig：查看本机IP地址</li>
+<li>ping IP地址：检查网络是否连通</li>
+</ul>
+</li>
+<li><p>特殊IP地址：</p>
+<ul>
+<li>127.0.0.1：是回送地址，可以代表本机地址，一般用来测试使用<br>注意：已知我自己电脑的ip，和127.0.0.1是不一样的（每个路由器分配的ip不一定一样，但回送地址一定是本机）</li>
+</ul>
+</li>
+<li><p>InetAddress类（表示ip的对象，判断本机使用的ip版本）</p>
+</li>
+<li></li>
+</ul>
+<h2 id="方法名｜说明｜-—-—-static-InetAddress-getByName-String-host-确定主机名称的IP地址。主机名称可以是机器名称，也可以是IP地址-String-getHostName-获取此IP地址的主机名-String-getHostAddress-返回文本显示中的IP地址字符串"><a href="#方法名｜说明｜-—-—-static-InetAddress-getByName-String-host-确定主机名称的IP地址。主机名称可以是机器名称，也可以是IP地址-String-getHostName-获取此IP地址的主机名-String-getHostAddress-返回文本显示中的IP地址字符串" class="headerlink" title="|方法名｜说明｜|—|—||static InetAddress getByName(String host) | 确定主机名称的IP地址。主机名称可以是机器名称，也可以是IP地址 ||String getHostName()| 获取此IP地址的主机名||String getHostAddress()| 返回文本显示中的IP地址字符串|"></a>|方法名｜说明｜<br>|—|—|<br>|static InetAddress getByName(String host) | 确定主机名称的IP地址。主机名称可以是机器名称，也可以是IP地址 |<br>|String getHostName()| 获取此IP地址的主机名|<br>|String getHostAddress()| 返回文本显示中的IP地址字符串|</h2><h2 id="端口号"><a href="#端口号" class="headerlink" title="端口号"></a>端口号</h2><p>两个字节表示的整数<br><img src="https://dzc2000919.oss-cn-shanghai.aliyuncs.com/zyx_images/202401152109792.png"></p>
+<h2 id="协议"><a href="#协议" class="headerlink" title="协议"></a>协议</h2><ul>
+<li><p>UDP协议(用户数据报协议)</p>
+<ul>
+<li>UDP是无连接通信协议，即在数据传输时，数据的发送端和接收端不建立逻辑连接。简单来说，当一台计算机向另外一台计算机发送数据时，发送端不会确认接收端是否存在，就会发出数据，同样接收端在收到数据时，也不会向发送端反馈是否收到数据。</li>
+<li>由于使用UDP协议消耗系统资源小，通信效率高，所以通常都会用于音频、视频和普通数据的传输</li>
+<li>例如视频会议通常采用UDP协议，因为这种情况即使偶尔丢失一两个数据包，也不会对接收结果产生太大影响。但是在使用UDP协议传送数据时，由于UDP的面向无连接性，不能保证数据的完整性，因此在传输重要数据时不建议使用UDP协议</li>
+</ul>
+</li>
+<li><p>TCP协议</p>
+<ul>
+<li><p>传输控制协议 (Transmission Control Protocol)</p>
+</li>
+<li><p>TCP协议是面向连接的通信协议，即传输数据之前，在发送端和接收端建立逻辑连接，然后再传输数据，它提供了两台计算机之间可靠无差错的数据传输。在TCP连接中必须要明确客户端与服务器端，由客户端向服务端发出连接请求，每次连接的创建都需要经过“三次握手”</p>
+</li>
+<li></li>
+</ul>
+</li>
+</ul>
+<h3 id="UDP协议（用户数据报协议）"><a href="#UDP协议（用户数据报协议）" class="headerlink" title="UDP协议（用户数据报协议）"></a>UDP协议（用户数据报协议）</h3><ul>
+<li><p>Java中的UDP通信</p>
+<ul>
+<li>UDP协议是一种不可靠的网络协议，它在通信的两端各建立一个Socket对象，但是这两个Socket只是发送，接收数据的对象，因此对于基于UDP协议的通信双方而言，没有所谓的客户端和服务器的概念</li>
+<li>Java提供了DatagramSocket类作为基于UDP协议的Socket</li>
+</ul>
+</li>
+<li><p>构造方法</p>
+<table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>DatagramSocket()</td>
+<td>创建数据报套接字并将其绑定到本机地址上的任何可用端口</td>
+</tr>
+<tr>
+<td>DatagramPacket(byte[] buf,int len,InetAddress add,int port)</td>
+<td>创建数据包,发送长度为len的数据包到指定主机的指定端口</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>相关方法</p>
+<table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>void send(DatagramPacket p)</td>
+<td>发送数据报包</td>
+</tr>
+<tr>
+<td>void close()</td>
+<td>关闭数据报套接字</td>
+</tr>
+<tr>
+<td>void receive(DatagramPacket p)</td>
+<td>从此套接字接受数据报包</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>发送数据的步骤</p>
+<ul>
+<li>创建发送端的Socket对象(DatagramSocket)</li>
+<li>创建数据，并把数据打包</li>
+<li>调用DatagramSocket对象的方法发送数据</li>
+<li>关闭发送端</li>
+</ul>
+</li>
+</ul>
+
+      </div>
+    </div>
+  </article>
+  <div class="post__foot">
+    
+    <div class="post-nav">
+  
+    <a class="post-nav-item-left" href="/2024/01/16/%E9%9D%A2%E8%AF%95%E7%BB%8F%E5%85%B8150%E9%A2%98/">
+      <div class="text-align">
+        <svg t="1670570876164"
+             class="icon"
+             viewBox="0 0 1024 1024"
+             width="16"
+             height="16">
+          <path d="M384 512L731.733333 202.666667c17.066667-14.933333 19.2-42.666667 4.266667-59.733334-14.933333-17.066667-42.666667-19.2-59.733333-4.266666l-384 341.333333c-10.666667 8.533333-14.933333 19.2-14.933334 32s4.266667 23.466667 14.933334 32l384 341.333333c8.533333 6.4 19.2 10.666667 27.733333 10.666667 12.8 0 23.466667-4.266667 32-14.933333 14.933333-17.066667 14.933333-44.8-4.266667-59.733334L384 512z" p-id="14596"/>
+        </svg>
+        <span class="text-small">上一篇</span>
+      </div>
+      <div>面试经典150题</div>
+    </a>
+  
+  <div class="vhr"></div>
+  
+    <a class="post-nav-item-right" href="/2024/01/15/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E6%89%A9%E5%B1%95%E5%86%85%E5%AE%B9/">
+      <div class="text-align">
+        <span class="text-small">下一篇</span>
+        <svg t="1670570876164"
+             class="icon"
+             viewBox="0 0 1024 1024"
+             transform="scale(-1,-1)"
+             width="16"
+             height="16">
+          <path d="M384 512L731.733333 202.666667c17.066667-14.933333 19.2-42.666667 4.266667-59.733334-14.933333-17.066667-42.666667-19.2-59.733333-4.266666l-384 341.333333c-10.666667 8.533333-14.933333 19.2-14.933334 32s4.266667 23.466667 14.933334 32l384 341.333333c8.533333 6.4 19.2 10.666667 27.733333 10.666667 12.8 0 23.466667-4.266667 32-14.933333 14.933333-17.066667 14.933333-44.8-4.266667-59.733334L384 512z" p-id="14596"/>
+        </svg>
+      </div>
+      多线程扩展内容
+    </a>
+  
+</div>
+
+    
+      <div class="related-post">
+  <div class="related__head">
+  <a href="/tags/Java/" class="post-tag">#Java</a><a href="/tags/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/" class="post-tag">#网络编程</a><a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" class="post-tag">#计算机网络</a>
+
+</div>
+  <div class="realated__body">
+    
+      DEBUG: 请安装插件 <a target="_blank" rel="noopener" href="https://github.com/tea3/hexo-related-popular-posts">hexo-related-popular-posts</a> 或关闭 related_post 配置!
+    
+  </div>
+</div>
+
+    
+    
+  </div>
+
+    </div>
+    <div class="foot">
+      <div class="foot-inner">
+        <div class="foot__head">
+          
+            <div class="foot-line">
+              
+                <div class="matts">若</div>
+              
+                <div class="matts">无</div>
+              
+                <div class="matts">闲</div>
+              
+                <div class="matts">事</div>
+              
+                <div class="matts">挂</div>
+              
+                <div class="matts">心</div>
+              
+                <div class="matts">头</div>
+              
+            </div>
+          
+            <div class="foot-line">
+              
+                <div class="matts">便</div>
+              
+                <div class="matts">是</div>
+              
+                <div class="matts">人</div>
+              
+                <div class="matts">间</div>
+              
+                <div class="matts">好</div>
+              
+                <div class="matts">时</div>
+              
+                <div class="matts">节</div>
+              
+            </div>
+          
+        </div>
+        <div class="foot__body">
+          
+            <div class="foot-item">
+              <div class="foot-item__head">朋友</div>
+              <div class="foot-item__body">
+                
+                  <div class="text">
+                    <img alt="link" height="20px" width="20px" src="/images/icon/icon-link.svg"/>
+                    <a class="foot-link" target="_blank" rel="noopener" href="https://carriemint.github.io">芋圆的主页</a>
+                  </div>
+                
+                <div class="text">
+                  <img alt="link" height="20px" width="20px" src="/images/icon/icon-link+.svg"/>
+                  <a class="foot-link"
+                     href="mailto:863162796@qq.com?subject=%E7%94%B3%E8%AF%B7%20Hozen.site%20%E7%9A%84%E5%8F%8B%E9%93%BE%E4%BD%8D%E7%BD%AE">
+                  申请友链</a>
+                </div>
+              </div>
+            </div>
+          
+          
+            <div class="foot-item">
+              <div class="foot-item__head">账号</div>
+              <div class="foot-item__body">
+                
+                  <div class="text">
+                    <img alt="link" height="20px" width="20px" src="/images/logo-github.svg"/>
+                    <a class="foot-link" target="_blank" rel="noopener" href="https://github.com/carriemint">carriemint</a>
+                  </div>
+                
+              </div>
+            </div>
+          
+          <div class="foot-item">
+            <div class="foot-item__head">联系</div>
+            <div class="foot-item__body">
+              <div class="text">
+                <img alt="link" height="20px" width="20px" src="/images/icon/icon-email.svg"/>
+                <a class="foot-link" href="mailto:863162796@qq.com">863162796@qq.com</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="copyright">
+          <a href="http://example.com">芋圆明天不困</a> &nbsp;|&nbsp;由&nbsp;<a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>&nbsp;及&nbsp;
+          <svg width="20" height="20" viewBox="0 0 725 725">
+            <path fill-rule="evenodd" fill="rgb(221, 221, 221)" d="M145.870,236.632 L396.955,103.578 L431.292,419.44 L156.600,522.53 L145.870,236.632 Z"/>
+            <path fill-rule="evenodd" fill="rgb(159, 159, 159)" d="M396.955,103.578 L564.345,234.486 L611.558,513.469 L431.292,419.44 L396.955,103.578 Z"/>
+            <path fill-rule="evenodd" fill="rgb(0, 0, 0)" d="M431.292,419.44 L611.558,513.469 L358.327,595.18 L156.600,522.53 L431.292,419.44 Z"/>
+          </svg>
+          <a target="_blank" rel="noopener" href="https://github.com/hooozen/hexo-theme-tranquility">致远</a>&nbsp;驱动
+        </div>
+      </div>
+    </div>
+    
+    
+  
+
+  </body>
+</html>

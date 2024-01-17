@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf8"/>
+    <meta name="viewport" content="initial-scale=1.0, width=device-width"/>
+    <title>
+      
+        面试经典150题 | 芋圆明天不困
+      
+    </title>
+    <meta name="description" content=""/>
+    <meta name="keywords" content=""/>
+    
+      <link rel="apple-touch-icon"
+            sizes="180x180"
+            href="/images/apple-touch-icon.png"/>
+    
+    
+      <link rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="/images/favicon-32x32.png"/>
+    
+    
+      <link rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="/images/favicon-16x16.png"/>
+    
+    
+      <link rel="mask-icon"
+            href="/images/logo.svg"
+            color=""/>
+    
+    
+    
+      
+  <style>
+    @font-face {
+        font-family:sourceHanSerif;
+        src: url(/font/regular.ttf);
+        font-weight: regular;
+    }
+  </style>
+
+  <style>
+    @font-face {
+        font-family:sourceHanSerif;
+        src: url(/font/bold.ttf);
+        font-weight: bold;
+    }
+  </style>
+
+
+    
+    <link rel="stylesheet"
+          type="text/css"
+          href='/css/layout.css'/>
+    
+    
+  <link rel="stylesheet" type="text/css" href="/css/post.css" />
+  
+
+  <meta name="generator" content="Hexo 6.3.0"></head>
+  <body>
+    <div class="head">
+      <div class="nav">
+        <a href='/' class="nav-logo">
+          <img alt="logo" height="60px" width="60px" src="/images/logo.svg"/>
+        </a>
+        <input id="navBtn" type="checkbox"/>
+        <div class="nav-menu">
+          
+            
+              <a class="nav-menu-item" href="/CS">技术</a>
+            
+              <a class="nav-menu-item" href="/Others">杂七杂八</a>
+            
+          
+          
+        </div>
+        <label class="nav-btn" for="navBtn"></label>
+      </div>
+    </div>
+    <div class="body">
+      
+  <article class="post-content">
+    <div class="post-inner--toc">
+      <div class="post-content__head">
+        <div class="post-title">面试经典150题</div>
+        <div class="post-info">
+          
+  <a href="/tags/LeetCode/" class="post-tag">#LeetCode</a><a href="/tags/%E6%95%B0%E7%BB%84/" class="post-tag">#数组</a>
+
+
+          <span class="post-date">2024-01-16</span>
+        </div>
+      </div>
+      
+        <aside class="toc-outer">
+          <div class="toc-title">目录</div>
+          <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#88-%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84"><span class="post-toc-text">88.合并两个有序数组</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#27-%E7%A7%BB%E5%87%BA%E5%85%83%E7%B4%A0"><span class="post-toc-text">27.移出元素</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#26-%E5%88%A0%E9%99%A4%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9"><span class="post-toc-text">26.删除有序数组中的重复项</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#80-%E5%88%A0%E9%99%A4%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B92"><span class="post-toc-text">80.删除有序数组中的重复项2</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#169-%E5%A4%9A%E6%95%B0%E5%85%83%E7%B4%A0"><span class="post-toc-text">169. 多数元素</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#HashMap%E5%9F%BA%E7%A1%80%E7%89%88"><span class="post-toc-text">HashMap基础版</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%BF%9B%E9%98%B6%E7%89%88%EF%BC%88Boyer-Moore-%E6%8A%95%E7%A5%A8%E7%AE%97%E6%B3%95%EF%BC%89"><span class="post-toc-text">进阶版（Boyer-Moore 投票算法）</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#189-%E8%BD%AE%E8%BD%AC%E6%95%B0%E7%BB%84"><span class="post-toc-text">189.轮转数组</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%B3%951%E4%BD%BF%E7%94%A8%E9%A2%9D%E5%A4%96%E6%95%B0%E7%BB%84"><span class="post-toc-text">法1使用额外数组</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%B3%952%E7%8E%AF%E5%BD%A2%E6%9B%BF%E6%8D%A2"><span class="post-toc-text">法2环形替换</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%B3%953%E7%BF%BB%E8%BD%AC%E6%95%B0%E7%BB%84"><span class="post-toc-text">法3翻转数组</span></a></li></ol></li></ol>
+          <a href="#" class="toc-top">回到顶部</a>
+        </aside>
+      
+      <div class="post-content__body">
+        
+          <div class="post-gallery">
+            
+          </div>
+        
+        <h1 id="88-合并两个有序数组"><a href="#88-合并两个有序数组" class="headerlink" title="88.合并两个有序数组"></a>88.合并两个有序数组</h1><p>双指针<br>由于数组是增序，从数组末尾遍历更好</p>
+<figure class="highlight plaintext"><figcaption><span>Solution &#123;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">    public void merge(int[] nums1, int m, int[] nums2, int n) &#123;</span><br><span class="line">        int index1=m-1;</span><br><span class="line">        int index2=n-1;</span><br><span class="line">        int p;</span><br><span class="line">        for(p=m+n-1;p&gt;=0;p--)&#123;</span><br><span class="line">            if(index1&lt;0 ||index2&lt;0)&#123;</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">            if(nums1[index1]&gt;nums2[index2])&#123;</span><br><span class="line">                nums1[p]=nums1[index1];</span><br><span class="line">                index1--;</span><br><span class="line">            &#125;else&#123;</span><br><span class="line">                nums1[p]=nums2[index2];</span><br><span class="line">                index2--;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        //注意，可能有数组没有插入完全(num2更长，num1更长不用管因为是有序的)</span><br><span class="line">        if(index1&lt;0)&#123;</span><br><span class="line">            while(index2&gt;=0)&#123;</span><br><span class="line">                nums1[p]=nums2[index2];</span><br><span class="line">                p--;index2--;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="27-移出元素"><a href="#27-移出元素" class="headerlink" title="27.移出元素"></a>27.移出元素</h1><p>双指针，左右两边，将相同的元素，放在数组右边<br>仅仅只有left值不为val，才增。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public int removeElement(int[] nums, int val) &#123;</span><br><span class="line">        int left=0;</span><br><span class="line">        int right=nums.length;</span><br><span class="line">        while(left&lt;right)&#123;</span><br><span class="line">            if(nums[left]==val)&#123;</span><br><span class="line">                nums[left]=nums[right-1];</span><br><span class="line">                right--;</span><br><span class="line">            &#125;else&#123;</span><br><span class="line">                left++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return left;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="26-删除有序数组中的重复项"><a href="#26-删除有序数组中的重复项" class="headerlink" title="26.删除有序数组中的重复项"></a>26.删除有序数组中的重复项</h1><p>快指针和慢指针</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public int removeDuplicates(int[] nums) &#123;</span><br><span class="line">        int left=0,right=1;</span><br><span class="line">        while(right&lt;nums.length)&#123;</span><br><span class="line">            if(nums[left]!=nums[right])&#123;</span><br><span class="line">                left++;</span><br><span class="line">                nums[left]=nums[right];</span><br><span class="line">            &#125;</span><br><span class="line">            right++;</span><br><span class="line">        &#125;</span><br><span class="line">        return left+1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="80-删除有序数组中的重复项2"><a href="#80-删除有序数组中的重复项2" class="headerlink" title="80.删除有序数组中的重复项2"></a>80.删除有序数组中的重复项2</h1><p>只要保证不会有3个连续大小的即可，让slow-2与fast不相等的时候，赋值。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public int removeDuplicates(int[] nums) &#123;</span><br><span class="line">        //注意排除特殊情况</span><br><span class="line">        if(nums.length&lt;=2)&#123;</span><br><span class="line">            return nums.length;</span><br><span class="line">        &#125;</span><br><span class="line">        int fast=2,slow=2;</span><br><span class="line">        while(fast&lt;nums.length)&#123;</span><br><span class="line">            if(nums[fast]!=nums[slow-2])&#123;</span><br><span class="line">                nums[slow]=nums[fast];</span><br><span class="line">                slow++;</span><br><span class="line">            &#125;</span><br><span class="line">             fast++;</span><br><span class="line">        &#125;</span><br><span class="line">        return slow;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="169-多数元素"><a href="#169-多数元素" class="headerlink" title="169. 多数元素"></a>169. 多数元素</h1><h2 id="HashMap基础版"><a href="#HashMap基础版" class="headerlink" title="HashMap基础版"></a>HashMap基础版</h2><p>使用hashmap存储计算每个元素的个数，然后遍历获取大多数元素值，时间空间复杂度均为O（n）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public int majorityElement(int[] nums) &#123;</span><br><span class="line">        int count=nums.length/2;</span><br><span class="line">        HashMap&lt;Integer,Integer&gt; hm=new HashMap();</span><br><span class="line">        for(int i=0;i&lt;nums.length;i++)&#123;</span><br><span class="line">            if(!hm.containsKey(nums[i]))&#123;</span><br><span class="line">                hm.put(nums[i],1);</span><br><span class="line">            &#125;else&#123;</span><br><span class="line">                int c=hm.get(nums[i])+1;</span><br><span class="line">                hm.put(nums[i],c);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        int k;</span><br><span class="line">        Map.Entry&lt;Integer,Integer&gt; element=null;</span><br><span class="line">        for(Map.Entry&lt;Integer,Integer&gt; entry: hm.entrySet())&#123;</span><br><span class="line"></span><br><span class="line">            if(entry.getValue()&gt;count)&#123;</span><br><span class="line">                element=entry;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return element.getKey();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="进阶版（Boyer-Moore-投票算法）"><a href="#进阶版（Boyer-Moore-投票算法）" class="headerlink" title="进阶版（Boyer-Moore 投票算法）"></a>进阶版（Boyer-Moore 投票算法）</h2><p>时间复杂度为O（n），空间复杂度为O（1）；<br>思路：<br>如果我们把众数记为 +1+1+1，把其他数记为 −1-1−1，将它们全部加起来，显然和大于 0，从结果本身我们可以看出众数比其他数多。<br>（与众数不同的元素个数肯定大于众数的数量！）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public int majorityElement(int[] nums) &#123;</span><br><span class="line">        //摩尔计数</span><br><span class="line">        int candicate=nums[0];</span><br><span class="line">        int count=0;</span><br><span class="line">        for(int i=0;i&lt;nums.length;i++)&#123;</span><br><span class="line">            //简化：count+=（candicate==nums[i]）？1:-1；</span><br><span class="line">            if(count!=0)&#123;</span><br><span class="line">                if(candicate==nums[i])&#123;</span><br><span class="line">                    count++;</span><br><span class="line">                &#125;else&#123;</span><br><span class="line">                    count--;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;else&#123;</span><br><span class="line">                candicate=nums[i];</span><br><span class="line">                count++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return candicate;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="189-轮转数组"><a href="#189-轮转数组" class="headerlink" title="189.轮转数组"></a>189.轮转数组</h1><h2 id="法1使用额外数组"><a href="#法1使用额外数组" class="headerlink" title="法1使用额外数组"></a>法1使用额外数组</h2><p>相当于每个元素往后移动k个位置，超出数组长度的则取余数。然后拷贝到原来的数组<br>注意：<strong>System.arraycopy():复制数组</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public void rotate(int[] nums, int k) &#123;</span><br><span class="line">        int n=nums.length;</span><br><span class="line">        int[] result=new int[n];</span><br><span class="line">        for(int i=0;i&lt;n;i++)&#123;</span><br><span class="line">            result[(i+k)%n]=nums[i];</span><br><span class="line">        &#125;</span><br><span class="line">        System.arraycopy(result,0,nums,0,n);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="法2环形替换"><a href="#法2环形替换" class="headerlink" title="法2环形替换"></a>法2环形替换</h2><p>求最大公约数gcd(看不懂，直接用的count计数，当遍历的元素个数等于数组长度时，停止循环)<br><img src="https://dzc2000919.oss-cn-shanghai.aliyuncs.com/zyx_images/202401171419431.png"><br>对于每个元素，循环一圈会回到原点（终止循环）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public void rotate(int[] nums, int k) &#123;</span><br><span class="line">        int n=nums.length;</span><br><span class="line">        //当k比n长的时候，需要取模</span><br><span class="line">        k=k%n;</span><br><span class="line">        //直接记录元素</span><br><span class="line">        int count=0;</span><br><span class="line">        for(int start=0;;start++)&#123;</span><br><span class="line">            if(count==n)&#123;</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">            int current=start;</span><br><span class="line">            int prev=nums[start];</span><br><span class="line">            //一圈</span><br><span class="line">            do&#123;</span><br><span class="line">                int next=(current+k)%n;</span><br><span class="line">                int temp=nums[next];</span><br><span class="line">                nums[next]=prev;</span><br><span class="line">                prev=temp;</span><br><span class="line">                current=next;</span><br><span class="line">                count++;</span><br><span class="line">            &#125;while(current!=start);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="法3翻转数组"><a href="#法3翻转数组" class="headerlink" title="法3翻转数组"></a>法3翻转数组</h2><p><img src="https://dzc2000919.oss-cn-shanghai.aliyuncs.com/zyx_images/202401171422211.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public void rotate(int[] nums, int k) &#123;</span><br><span class="line">        k%=nums.length;</span><br><span class="line">        reverse(nums,0,nums.length-1);</span><br><span class="line">        reverse(nums,0,k-1);</span><br><span class="line">        reverse(nums,k,nums.length-1);</span><br><span class="line">       </span><br><span class="line">    &#125;</span><br><span class="line">    public void reverse(int[] nums,int start,int end)&#123;</span><br><span class="line">        while(start&lt;end)&#123;</span><br><span class="line">            int t=nums[start];</span><br><span class="line">            nums[start]=nums[end];</span><br><span class="line">            nums[end]=t;</span><br><span class="line">            start++;</span><br><span class="line">            end--;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      </div>
+    </div>
+  </article>
+  <div class="post__foot">
+    
+    <div class="post-nav">
+  
+    <div class="post-nav-item-left"></div>
+  
+  <div class="vhr"></div>
+  
+    <a class="post-nav-item-right" href="/2024/01/15/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/">
+      <div class="text-align">
+        <span class="text-small">下一篇</span>
+        <svg t="1670570876164"
+             class="icon"
+             viewBox="0 0 1024 1024"
+             transform="scale(-1,-1)"
+             width="16"
+             height="16">
+          <path d="M384 512L731.733333 202.666667c17.066667-14.933333 19.2-42.666667 4.266667-59.733334-14.933333-17.066667-42.666667-19.2-59.733333-4.266666l-384 341.333333c-10.666667 8.533333-14.933333 19.2-14.933334 32s4.266667 23.466667 14.933334 32l384 341.333333c8.533333 6.4 19.2 10.666667 27.733333 10.666667 12.8 0 23.466667-4.266667 32-14.933333 14.933333-17.066667 14.933333-44.8-4.266667-59.733334L384 512z" p-id="14596"/>
+        </svg>
+      </div>
+      网络编程
+    </a>
+  
+</div>
+
+    
+      <div class="related-post">
+  <div class="related__head">
+  <a href="/tags/LeetCode/" class="post-tag">#LeetCode</a><a href="/tags/%E6%95%B0%E7%BB%84/" class="post-tag">#数组</a>
+
+</div>
+  <div class="realated__body">
+    
+      DEBUG: 请安装插件 <a target="_blank" rel="noopener" href="https://github.com/tea3/hexo-related-popular-posts">hexo-related-popular-posts</a> 或关闭 related_post 配置!
+    
+  </div>
+</div>
+
+    
+    
+  </div>
+
+    </div>
+    <div class="foot">
+      <div class="foot-inner">
+        <div class="foot__head">
+          
+            <div class="foot-line">
+              
+                <div class="matts">若</div>
+              
+                <div class="matts">无</div>
+              
+                <div class="matts">闲</div>
+              
+                <div class="matts">事</div>
+              
+                <div class="matts">挂</div>
+              
+                <div class="matts">心</div>
+              
+                <div class="matts">头</div>
+              
+            </div>
+          
+            <div class="foot-line">
+              
+                <div class="matts">便</div>
+              
+                <div class="matts">是</div>
+              
+                <div class="matts">人</div>
+              
+                <div class="matts">间</div>
+              
+                <div class="matts">好</div>
+              
+                <div class="matts">时</div>
+              
+                <div class="matts">节</div>
+              
+            </div>
+          
+        </div>
+        <div class="foot__body">
+          
+            <div class="foot-item">
+              <div class="foot-item__head">朋友</div>
+              <div class="foot-item__body">
+                
+                  <div class="text">
+                    <img alt="link" height="20px" width="20px" src="/images/icon/icon-link.svg"/>
+                    <a class="foot-link" target="_blank" rel="noopener" href="https://carriemint.github.io">芋圆的主页</a>
+                  </div>
+                
+                <div class="text">
+                  <img alt="link" height="20px" width="20px" src="/images/icon/icon-link+.svg"/>
+                  <a class="foot-link"
+                     href="mailto:863162796@qq.com?subject=%E7%94%B3%E8%AF%B7%20Hozen.site%20%E7%9A%84%E5%8F%8B%E9%93%BE%E4%BD%8D%E7%BD%AE">
+                  申请友链</a>
+                </div>
+              </div>
+            </div>
+          
+          
+            <div class="foot-item">
+              <div class="foot-item__head">账号</div>
+              <div class="foot-item__body">
+                
+                  <div class="text">
+                    <img alt="link" height="20px" width="20px" src="/images/logo-github.svg"/>
+                    <a class="foot-link" target="_blank" rel="noopener" href="https://github.com/carriemint">carriemint</a>
+                  </div>
+                
+              </div>
+            </div>
+          
+          <div class="foot-item">
+            <div class="foot-item__head">联系</div>
+            <div class="foot-item__body">
+              <div class="text">
+                <img alt="link" height="20px" width="20px" src="/images/icon/icon-email.svg"/>
+                <a class="foot-link" href="mailto:863162796@qq.com">863162796@qq.com</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="copyright">
+          <a href="http://example.com">芋圆明天不困</a> &nbsp;|&nbsp;由&nbsp;<a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>&nbsp;及&nbsp;
+          <svg width="20" height="20" viewBox="0 0 725 725">
+            <path fill-rule="evenodd" fill="rgb(221, 221, 221)" d="M145.870,236.632 L396.955,103.578 L431.292,419.44 L156.600,522.53 L145.870,236.632 Z"/>
+            <path fill-rule="evenodd" fill="rgb(159, 159, 159)" d="M396.955,103.578 L564.345,234.486 L611.558,513.469 L431.292,419.44 L396.955,103.578 Z"/>
+            <path fill-rule="evenodd" fill="rgb(0, 0, 0)" d="M431.292,419.44 L611.558,513.469 L358.327,595.18 L156.600,522.53 L431.292,419.44 Z"/>
+          </svg>
+          <a target="_blank" rel="noopener" href="https://github.com/hooozen/hexo-theme-tranquility">致远</a>&nbsp;驱动
+        </div>
+      </div>
+    </div>
+    
+    
+  
+
+  </body>
+</html>
