@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf8"/>
+    <meta name="viewport" content="initial-scale=1.0, width=device-width"/>
+    <title>
+      
+        Maven | 芋圆明天不困
+      
+    </title>
+    <meta name="description" content=""/>
+    <meta name="keywords" content=""/>
+    
+      <link rel="apple-touch-icon"
+            sizes="180x180"
+            href="/images/apple-touch-icon.png"/>
+    
+    
+      <link rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="/images/favicon-32x32.png"/>
+    
+    
+      <link rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="/images/favicon-16x16.png"/>
+    
+    
+      <link rel="mask-icon"
+            href="/images/logo.svg"
+            color=""/>
+    
+    
+    
+      
+  <style>
+    @font-face {
+        font-family:sourceHanSerif;
+        src: url(/font/regular.ttf);
+        font-weight: regular;
+    }
+  </style>
+
+  <style>
+    @font-face {
+        font-family:sourceHanSerif;
+        src: url(/font/bold.ttf);
+        font-weight: bold;
+    }
+  </style>
+
+
+    
+    <link rel="stylesheet"
+          type="text/css"
+          href='/css/layout.css'/>
+    
+    
+  <link rel="stylesheet" type="text/css" href="/css/post.css" />
+  
+
+  <meta name="generator" content="Hexo 6.3.0"></head>
+  <body>
+    <div class="head">
+      <div class="nav">
+        <a href='/' class="nav-logo">
+          <img alt="logo" height="60px" width="60px" src="/images/logo.svg"/>
+        </a>
+        <input id="navBtn" type="checkbox"/>
+        <div class="nav-menu">
+          
+            
+              <a class="nav-menu-item" href="/CS">技术</a>
+            
+              <a class="nav-menu-item" href="/Others">杂七杂八</a>
+            
+          
+          
+        </div>
+        <label class="nav-btn" for="navBtn"></label>
+      </div>
+    </div>
+    <div class="body">
+      
+  <article class="post-content">
+    <div class="post-inner">
+      <div class="post-content__head">
+        <div class="post-title">Maven</div>
+        <div class="post-info">
+          
+  <a href="/tags/Java/" class="post-tag">#Java</a><a href="/tags/%E5%BC%80%E5%8F%91/" class="post-tag">#开发</a><a href="/tags/SSM/" class="post-tag">#SSM</a>
+
+
+          <span class="post-date">2024-01-18</span>
+        </div>
+      </div>
+      
+      <div class="post-content__body">
+        
+          <div class="post-gallery">
+            
+          </div>
+        
+        <p>SSM(Spring+Spring MVC+MyBatis)框架结合SPringBoot和MyBatis-Plus进行高效的Web开发</p>
+<p><img src="https://dzc2000919.oss-cn-shanghai.aliyuncs.com/zyx_images/202401181545224.png"></p>
+<h1 id="Maven入门"><a href="#Maven入门" class="headerlink" title="Maven入门"></a>Maven入门</h1><p>Maven：<strong>项目构建管理，依赖管理</strong>的工具；可以自动化构建，测试，打包和发布项目</p>
+<p><strong>项目构建：指将源代码、配置文件、资源文件等转化为能够运行或部署的应用程序或库的过程</strong></p>
+<ul>
+<li>第三方库（依赖），写配置文件，然后自动下载依赖到项目中。</li>
+<li>项目打包，.war文件，部署到服务器，（mvn package）项目构建（java文件构建为.class字节码文件）和打包。</li>
+</ul>
+<p>一般是idea构建，现在用Maven，因为方便，且不同软件构建的项目结构不同</p>
+<p>Maven 中的 GAVP 是指 GroupId、ArtifactId、Version、Packaging 等四个属性的缩写，gav需要我们在创建项目的时指定，p有默认值，后期通过配置文件修改。</p>
+<h2 id="依赖传递和依赖冲突"><a href="#依赖传递和依赖冲突" class="headerlink" title="依赖传递和依赖冲突"></a>依赖传递和依赖冲突</h2><ul>
+<li>依赖传递<br>指的是当一个模块或库 A 依赖于另一个模块或库 B，而 B 又依赖于模块或库 C，那么 A 会间接依赖于 C。这种依赖传递结构可以形成一个依赖树。当我们引入一个库或框架时，构建工具（如 Maven、Gradle）会自动解析和加载其所有的直接和间接依赖，确保这些依赖都可用。</li>
+</ul>
+<p>依赖传递的作用是：减少重复依赖；自动管理依赖；确保依赖版本正确性<br>compile dependenices才会自动传递；test不传递</p>
+<ul>
+<li><p>依赖冲突（重复依赖）<br>当直接引用或者间接引用出现了相同的jar包，依赖冲突避免出现重复依赖，并且终止依赖传递。<br>maven自动解决依赖冲突问题能力，会按照自己的原则，进行重复依赖选择。</p>
+</li>
+<li><p>短路优先原则（第一原则）</p>
+</li>
+<li><p>依赖路径长度相同情况下，则“先声明优先”（第二原则）</p>
+</li>
+</ul>
+<h2 id="依赖导入失败和解决方法"><a href="#依赖导入失败和解决方法" class="headerlink" title="依赖导入失败和解决方法"></a>依赖导入失败和解决方法</h2><p>在使用 Maven 构建项目时，可能会发生依赖项下载错误的情况，主要原因有以下几种：</p>
+<ol>
+<li>下载依赖时出现网络故障或仓库服务器宕机等原因，导致无法连接至 Maven 仓库，从而无法下载依赖。</li>
+<li>依赖项的版本号或配置文件中的版本号错误，或者依赖项没有正确定义，导致 Maven 下载的依赖项与实际需要的不一致，从而引发错误。</li>
+<li>本地 Maven 仓库或缓存被污染或损坏，导致 Maven 无法正确地使用现有的依赖项，并且也无法重新下载！</li>
+</ol>
+<p>解决方案：</p>
+<ol>
+<li>检查网络连接和 Maven 仓库服务器状态。</li>
+<li>确保依赖项的版本号与项目对应的版本号匹配，并检查 POM 文件中的依赖项是否正确。</li>
+</ol>
+<p>阿里镜像下载到本地仓库，如果访问本地仓库没有，也不访问阿里镜像，说明本地仓库被污染<br>3. 清除本地 Maven 仓库缓存（lastUpdated 文件），因为只要存在lastupdated缓存文件，刷新也不会重新下载。本地仓库中，根据依赖的gav属性依次向下查找文件夹，最终删除内部的文件，刷新重新下载即可。</p>
+<h2 id="扩展构建管理和插件配置"><a href="#扩展构建管理和插件配置" class="headerlink" title="扩展构建管理和插件配置"></a>扩展构建管理和插件配置</h2><p><img src="https://dzc2000919.oss-cn-shanghai.aliyuncs.com/zyx_images/202401181908348.png"></p>
+<p><strong>主动触发场景：</strong></p>
+<ul>
+<li>重新编译 : 编译不充分, 部分文件没有被编译!</li>
+<li>打包 : 独立部署到外部服务器软件,打包部署</li>
+<li>部署本地或者私服仓库 : maven工程加入到本地或者私服仓库,供其他工程使用</li>
+</ul>
+<p>下图对应上图的几个步骤（需要进入项目跟路径，pom。xml）：<br><img src="https://dzc2000919.oss-cn-shanghai.aliyuncs.com/zyx_images/202401181911947.png"></p>
+<p><strong>构建命令周期:</strong><br>构建生命周期可以理解成是一组固定构建命令的有序集合，会自动触发同一周期前的命令(比如package，不需要逐一输入前面的命令)。</p>
+<ul>
+<li>清理周期：clean</li>
+<li>构建周期：定义了真正构件时所需要执行的所有步骤，它是生命周期中最核心的部分<br>  包含命令：compile - test - package - install &#x2F; deploy</li>
+<li>报告周期：site</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">打包: mvn clean package</span><br><span class="line">重新编译: mvn clean compile</span><br><span class="line">本地部署: mvn clean install </span><br></pre></td></tr></table></figure>
+
+<p><strong>周期，命令和插件:</strong><br><strong>周期→包含若干命令→包含若干插件</strong><br>使用周期命令构建，简化构建过程，最终进行构建的是<strong>插件</strong></p>
+<h1 id="Maven的继承和聚合"><a href="#Maven的继承和聚合" class="headerlink" title="Maven的继承和聚合"></a>Maven的继承和聚合</h1><h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><p>作用：<strong>在父工程中统一管理项目中的依赖信息,进行统一版本管理</strong></p>
+<p><img src="https://dzc2000919.oss-cn-shanghai.aliyuncs.com/zyx_images/202401181931355.png"></p>
+<p>对一个比较大型的项目进行了模块拆分，一个 project 下面，创建了很多个 module，每一个 module 都需要配置自己的依赖信息（多个模块要使用同一个框架，版本应该相同）</p>
+<ul>
+<li>声名依赖<br>父工程不引入依赖，只做依赖版本的声名（<dependencyManagement><dependencies><dependency><gav>）(子类不用声名版本，使用父类对应的version)<br>（<packaging>pom</packaging>,不打包直接继承）</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 使用parent标签指定当前工程的父工程 --&gt;</span><br><span class="line">&lt;parent&gt;</span><br><span class="line">  &lt;!-- 父工程的坐标 --&gt;</span><br><span class="line">  &lt;groupId&gt;com.atguigu.maven&lt;/groupId&gt;</span><br><span class="line">  &lt;artifactId&gt;pro03-maven-parent&lt;/artifactId&gt;</span><br><span class="line">  &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;</span><br><span class="line">&lt;/parent&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- 子工程的坐标 --&gt;</span><br><span class="line">&lt;!-- 如果子工程坐标中的groupId和version与父工程一致，那么可以省略 --&gt;</span><br><span class="line">&lt;!-- &lt;groupId&gt;com.atguigu.maven&lt;/groupId&gt; --&gt;</span><br><span class="line">&lt;artifactId&gt;pro04-maven-module&lt;/artifactId&gt;</span><br><span class="line">&lt;!-- &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt; --&gt;</span><br></pre></td></tr></table></figure>
+<p>子工程引用：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 子工程引用父工程中的依赖信息时，可以把版本号去掉。  --&gt;</span><br><span class="line">&lt;!-- 把版本号去掉就表示子工程中这个依赖的版本由父工程决定。 --&gt;</span><br><span class="line">&lt;!-- 具体来说是由父工程的dependencyManagement来决定。 --&gt;</span><br></pre></td></tr></table></figure>
+<p>子工程写版本号，会覆盖父工程的。</p>
+<h2 id="聚合"><a href="#聚合" class="headerlink" title="聚合"></a>聚合</h2><p>聚合：Maven 聚合是指将多个项目组织到一个父级项目中，通过触发父工程的构建,统一按顺序触发子工程构建的过程</p>
+<p>聚合作用：</p>
+<ol>
+<li><strong>统一管理子项目构建</strong>：通过聚合，可以<strong>将多个子项目组织在一起</strong>，方便管理和维护。</li>
+<li><strong>优化构建顺序</strong>：通过聚合，可以对多个项目进行<strong>顺序控制</strong>，避免出现构建依赖混乱导致构建失败的情况。</li>
+</ol>
+<p>父工程的pom文件中的，module标签中的，为聚合的子项目（可以删除子项目，不构建）</p>
+<p>总结：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="line"></span><br><span class="line">&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;  </span><br><span class="line">  &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;</span><br><span class="line">&lt;!--  gavp属性--&gt;</span><br><span class="line">&lt;!--  不改变--&gt;</span><br><span class="line">  &lt;groupId&gt;com.carriemint&lt;/groupId&gt;  </span><br><span class="line">  &lt;artifactId&gt;maven-javase-project-1&lt;/artifactId&gt;</span><br><span class="line">&lt;!--  部署修改--&gt;</span><br><span class="line">  &lt;version&gt;1.0.0&lt;/version&gt;</span><br><span class="line">&lt;!--  默认jar；web：war；pom不打包--&gt;</span><br><span class="line">  &lt;packaging&gt;war&lt;/packaging&gt;</span><br><span class="line">&lt;!--  声名版本号--&gt;</span><br><span class="line">  &lt;properties&gt;</span><br><span class="line">&lt;!--    标签名可以自定义，可以声名变量，在其他地方引用$&#123;&#125;，建议两层以上明明，避免与maven重名，集数名.version--&gt;</span><br><span class="line">    &lt;jackson.version&gt;2.15.2&lt;/jackson.version&gt;</span><br><span class="line">    &lt;maven.compiler.source&gt;20&lt;/maven.compiler.source&gt;</span><br><span class="line">    &lt;maven.compiler.target&gt;20&lt;/maven.compiler.target&gt;</span><br><span class="line">    &lt;maven.compiler.sourceEncoding&gt;20&lt;/maven.compiler.sourceEncoding&gt;</span><br><span class="line">  &lt;/properties&gt;</span><br><span class="line"></span><br><span class="line">&lt;!--  第三方依赖声名</span><br><span class="line">如何知道第三方信息：官网查询https://mvnrepository.com;maven-search插件</span><br><span class="line">可选属性：scope（引入依赖的作用域，默认compile，main，test，打包运行；</span><br><span class="line">如果设置为test，则只有在测试的时候用，junit；runtime，只有在打包运行才用，mysql；</span><br><span class="line">provided，只有打包运行不用）</span><br><span class="line">--&gt;</span><br><span class="line">  &lt;!--  依赖信息集合--&gt;</span><br><span class="line">  &lt;dependencies&gt;</span><br><span class="line">&lt;!--    每个依赖项--&gt;</span><br><span class="line">      &lt;dependency&gt;</span><br><span class="line">          &lt;groupId&gt;com.fasterxml.jackson.core&lt;/groupId&gt;</span><br><span class="line">          &lt;artifactId&gt;jackson-databind&lt;/artifactId&gt;</span><br><span class="line">          &lt;version&gt;2.16.0&lt;/version&gt;</span><br><span class="line">      &lt;/dependency&gt;</span><br><span class="line">  &lt;/dependencies&gt;</span><br><span class="line"></span><br><span class="line">&lt;!--    导入插件(当出现插件版本不兼容的情况，需要手动配置插件的版本)--&gt;</span><br><span class="line">&lt;!--    &lt;build&gt;--&gt;</span><br><span class="line">&lt;!--        &lt;plugins&gt;--&gt;</span><br><span class="line">&lt;!--            &lt;plugin&gt;--&gt;</span><br><span class="line">&lt;!--                --&gt;</span><br><span class="line">&lt;!--            &lt;/plugin&gt;--&gt;</span><br><span class="line">&lt;!--        &lt;/plugins&gt;--&gt;</span><br><span class="line"></span><br><span class="line">&lt;!--    &lt;/build&gt;--&gt;</span><br><span class="line"></span><br><span class="line">&lt;/project&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h1><p><img src="https://dzc2000919.oss-cn-shanghai.aliyuncs.com/zyx_images/202401182040986.png"></p>
+<p>将需要引用的jar包放在本地仓库，然后war包就可以引用它</p>
+<p>由于使用的jdk版本过高，maven，pom.xml中没有，会有警告,加入：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;properties&gt;</span><br><span class="line">      &lt;maven.compiler.source&gt;17&lt;/maven.compiler.source&gt;</span><br><span class="line">      &lt;maven.compiler.target&gt;17&lt;/maven.compiler.target&gt;</span><br><span class="line">      &lt;maven.compiler.compilerVersion&gt;17&lt;/maven.compiler.compilerVersion&gt;</span><br><span class="line">    &lt;/properties&gt;</span><br></pre></td></tr></table></figure>
+
+
+      </div>
+    </div>
+  </article>
+  <div class="post__foot">
+    
+    <div class="post-nav">
+  
+    <div class="post-nav-item-left"></div>
+  
+  <div class="vhr"></div>
+  
+    <a class="post-nav-item-right" href="/2024/01/16/%E9%9D%A2%E8%AF%95%E7%BB%8F%E5%85%B8150%E9%A2%98/">
+      <div class="text-align">
+        <span class="text-small">下一篇</span>
+        <svg t="1670570876164"
+             class="icon"
+             viewBox="0 0 1024 1024"
+             transform="scale(-1,-1)"
+             width="16"
+             height="16">
+          <path d="M384 512L731.733333 202.666667c17.066667-14.933333 19.2-42.666667 4.266667-59.733334-14.933333-17.066667-42.666667-19.2-59.733333-4.266666l-384 341.333333c-10.666667 8.533333-14.933333 19.2-14.933334 32s4.266667 23.466667 14.933334 32l384 341.333333c8.533333 6.4 19.2 10.666667 27.733333 10.666667 12.8 0 23.466667-4.266667 32-14.933333 14.933333-17.066667 14.933333-44.8-4.266667-59.733334L384 512z" p-id="14596"/>
+        </svg>
+      </div>
+      面试经典150题
+    </a>
+  
+</div>
+
+    
+      <div class="related-post">
+  <div class="related__head">
+  <a href="/tags/Java/" class="post-tag">#Java</a><a href="/tags/%E5%BC%80%E5%8F%91/" class="post-tag">#开发</a><a href="/tags/SSM/" class="post-tag">#SSM</a>
+
+</div>
+  <div class="realated__body">
+    
+      DEBUG: 请安装插件 <a target="_blank" rel="noopener" href="https://github.com/tea3/hexo-related-popular-posts">hexo-related-popular-posts</a> 或关闭 related_post 配置!
+    
+  </div>
+</div>
+
+    
+    
+  </div>
+
+    </div>
+    <div class="foot">
+      <div class="foot-inner">
+        <div class="foot__head">
+          
+            <div class="foot-line">
+              
+                <div class="matts">若</div>
+              
+                <div class="matts">无</div>
+              
+                <div class="matts">闲</div>
+              
+                <div class="matts">事</div>
+              
+                <div class="matts">挂</div>
+              
+                <div class="matts">心</div>
+              
+                <div class="matts">头</div>
+              
+            </div>
+          
+            <div class="foot-line">
+              
+                <div class="matts">便</div>
+              
+                <div class="matts">是</div>
+              
+                <div class="matts">人</div>
+              
+                <div class="matts">间</div>
+              
+                <div class="matts">好</div>
+              
+                <div class="matts">时</div>
+              
+                <div class="matts">节</div>
+              
+            </div>
+          
+        </div>
+        <div class="foot__body">
+          
+            <div class="foot-item">
+              <div class="foot-item__head">朋友</div>
+              <div class="foot-item__body">
+                
+                  <div class="text">
+                    <img alt="link" height="20px" width="20px" src="/images/icon/icon-link.svg"/>
+                    <a class="foot-link" target="_blank" rel="noopener" href="https://carriemint.github.io">芋圆的主页</a>
+                  </div>
+                
+                <div class="text">
+                  <img alt="link" height="20px" width="20px" src="/images/icon/icon-link+.svg"/>
+                  <a class="foot-link"
+                     href="mailto:863162796@qq.com?subject=%E7%94%B3%E8%AF%B7%20Hozen.site%20%E7%9A%84%E5%8F%8B%E9%93%BE%E4%BD%8D%E7%BD%AE">
+                  申请友链</a>
+                </div>
+              </div>
+            </div>
+          
+          
+            <div class="foot-item">
+              <div class="foot-item__head">账号</div>
+              <div class="foot-item__body">
+                
+                  <div class="text">
+                    <img alt="link" height="20px" width="20px" src="/images/logo-github.svg"/>
+                    <a class="foot-link" target="_blank" rel="noopener" href="https://github.com/carriemint">carriemint</a>
+                  </div>
+                
+              </div>
+            </div>
+          
+          <div class="foot-item">
+            <div class="foot-item__head">联系</div>
+            <div class="foot-item__body">
+              <div class="text">
+                <img alt="link" height="20px" width="20px" src="/images/icon/icon-email.svg"/>
+                <a class="foot-link" href="mailto:863162796@qq.com">863162796@qq.com</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="copyright">
+          <a href="http://example.com">芋圆明天不困</a> &nbsp;|&nbsp;由&nbsp;<a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>&nbsp;及&nbsp;
+          <svg width="20" height="20" viewBox="0 0 725 725">
+            <path fill-rule="evenodd" fill="rgb(221, 221, 221)" d="M145.870,236.632 L396.955,103.578 L431.292,419.44 L156.600,522.53 L145.870,236.632 Z"/>
+            <path fill-rule="evenodd" fill="rgb(159, 159, 159)" d="M396.955,103.578 L564.345,234.486 L611.558,513.469 L431.292,419.44 L396.955,103.578 Z"/>
+            <path fill-rule="evenodd" fill="rgb(0, 0, 0)" d="M431.292,419.44 L611.558,513.469 L358.327,595.18 L156.600,522.53 L431.292,419.44 Z"/>
+          </svg>
+          <a target="_blank" rel="noopener" href="https://github.com/hooozen/hexo-theme-tranquility">致远</a>&nbsp;驱动
+        </div>
+      </div>
+    </div>
+    
+    
+  
+
+  </body>
+</html>
