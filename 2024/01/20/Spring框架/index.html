@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf8"/>
+    <meta name="viewport" content="initial-scale=1.0, width=device-width"/>
+    <title>
+      
+        Spring框架 | 芋圆明天不困
+      
+    </title>
+    <meta name="description" content=""/>
+    <meta name="keywords" content=""/>
+    
+      <link rel="apple-touch-icon"
+            sizes="180x180"
+            href="/images/apple-touch-icon.png"/>
+    
+    
+      <link rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="/images/favicon-32x32.png"/>
+    
+    
+      <link rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="/images/favicon-16x16.png"/>
+    
+    
+      <link rel="mask-icon"
+            href="/images/logo.svg"
+            color=""/>
+    
+    
+    
+      
+  <style>
+    @font-face {
+        font-family:sourceHanSerif;
+        src: url(/font/regular.ttf);
+        font-weight: regular;
+    }
+  </style>
+
+  <style>
+    @font-face {
+        font-family:sourceHanSerif;
+        src: url(/font/bold.ttf);
+        font-weight: bold;
+    }
+  </style>
+
+
+    
+    <link rel="stylesheet"
+          type="text/css"
+          href='/css/layout.css'/>
+    
+    
+  <link rel="stylesheet" type="text/css" href="/css/post.css" />
+  
+
+  <meta name="generator" content="Hexo 6.3.0"></head>
+  <body>
+    <div class="head">
+      <div class="nav">
+        <a href='/' class="nav-logo">
+          <img alt="logo" height="60px" width="60px" src="/images/logo.svg"/>
+        </a>
+        <input id="navBtn" type="checkbox"/>
+        <div class="nav-menu">
+          
+            
+              <a class="nav-menu-item" href="/CS">技术</a>
+            
+              <a class="nav-menu-item" href="/Others">杂七杂八</a>
+            
+          
+          
+        </div>
+        <label class="nav-btn" for="navBtn"></label>
+      </div>
+    </div>
+    <div class="body">
+      
+  <article class="post-content">
+    <div class="post-inner">
+      <div class="post-content__head">
+        <div class="post-title">Spring框架</div>
+        <div class="post-info">
+          
+  <a href="/tags/Java/" class="post-tag">#Java</a><a href="/tags/%E5%BC%80%E5%8F%91/" class="post-tag">#开发</a><a href="/tags/SSM/" class="post-tag">#SSM</a>
+
+
+          <span class="post-date">2024-01-20</span>
+        </div>
+      </div>
+      
+      <div class="post-content__body">
+        
+          <div class="post-gallery">
+            
+          </div>
+        
+        <p><img src="https://dzc2000919.oss-cn-shanghai.aliyuncs.com/zyx_images/202401201814430.png"></p>
+<p><img src="https://dzc2000919.oss-cn-shanghai.aliyuncs.com/zyx_images/202401201814506.png"></p>
+<p>Springboot是将ssm整合的一个框架。</p>
+<p>框架 &#x3D; jar包（有功能）+配置文件（定制化）<br><img src="https://dzc2000919.oss-cn-shanghai.aliyuncs.com/zyx_images/202401201818757.png" width="50%" height="50%"></p>
+<ul>
+<li><p><strong>Spring</strong><br>广义的 Spring：Spring 技术栈（全家桶）。<br>广义上的 Spring 泛指<strong>以 Spring Framework 为基础的 Spring 技术栈。</strong></p>
+</li>
+<li><p>SpringFramework</p>
+<img src="https://dzc2000919.oss-cn-shanghai.aliyuncs.com/zyx_images/202401201823569.png" width="50%" height="50%"></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>功能模块</th>
+<th>功能介绍</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Core Container</strong></td>
+<td>核心容器，在 Spring 环境下使用任何功能都必须基于IOC容器。</td>
+</tr>
+<tr>
+<td>AOP&amp;Aspects</td>
+<td>面向切面编程</td>
+</tr>
+<tr>
+<td>TX</td>
+<td>声明式事务管理</td>
+</tr>
+<tr>
+<td>Spring MVC</td>
+<td>提供了面向Web应用程序的集成功能</td>
+</tr>
+</tbody></table>
+<ul>
+<li>SpringFramework优势</li>
+</ul>
+<ol>
+<li><strong>丰富的生态系统</strong>：支持许多模块和库，如 Spring Boot、Spring Security、Spring Cloud 等等，可以帮助开发人员快速构建高可靠性的企业应用程序。</li>
+<li><strong>模块化的设计</strong>：框架组件之间的松散耦合和模块化设计使得 Spring Framework 具有良好的可重用性、可扩展性和可维护性。</li>
+<li><strong>简化 Java 开发</strong>：Spring Framework 简化了 Java 开发，提供了各种工具和 API，可以降低开发复杂度和学习成本。同时，Spring Framework 支持各种应用场景，包括 Web 应用程序、RESTful API、消息传递、批处理等等。</li>
+</ol>
+<h1 id="SpringIOC容器和核心概念"><a href="#SpringIOC容器和核心概念" class="headerlink" title="SpringIOC容器和核心概念"></a>SpringIOC容器和核心概念</h1><ul>
+<li>组件是可以<strong>复用</strong>的java<strong>对象</strong></li>
+<li>组件可以完全交给Spring 框架进行管理，Spring框架替代了程序员原有的new对象和对象属性赋值动作等！</li>
+</ul>
+<p>交给Spring框架的优势：<br>降低了组件之间的耦合性，Spring IoC容器通过依赖注入机制，将组件之间的依赖关系削弱；提高了代码的可重用性和可维护性；方便了配置和管理；交给Spring管理的对象（组件），方<strong>可享受Spring框架的其他功能（AOP,声明事务管理TX）</strong>等</p>
+<ul>
+<li>SpringIOC容器<br>普通容器：只能存储数据（数组，list，set）<br>复杂容器：存储和管理数据（创建对象，调用方法）</li>
+</ul>
+<p>总结：<strong>Spring管理组件的容器，就是一个复杂容器，不仅存储组件，也可以管理组件之间依赖关系，并且创建和销毁组件等。</strong></p>
+<p>配置元数据以 <strong>XML、Java 注解或 Java 代码形式表现</strong>。它允许表达组成应用程序的组件以及这些组件之间丰富的相互依赖关系。</p>
+<ul>
+<li>SpringIOC的接口和实现类</li>
+</ul>
+<p>BeanFactory接口是SpringIOC容器的标准化超接口；<br><code>ApplicationContext</code> 是 <code>BeanFactory</code> 的子接口。它扩展了以下功能：</p>
+<ul>
+<li>更容易与 Spring 的 AOP 功能集成</li>
+<li>消息资源处理（用于国际化）</li>
+<li>特定于应用程序给予此接口实现，例如Web 应用程序的 <code>WebApplicationContext</code></li>
+</ul>
+<p>BeanFactory 提供了配置框架和基本功能；ApplicationContext 添加了更多特定于企业的功能</p>
+<table>
+<thead>
+<tr>
+<th>类型名</th>
+<th>简介</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>ClassPathXmlApplicationContext</strong></td>
+<td>通过读取类路径下的 XML 格式的配置文件创建 IOC 容器对象</td>
+</tr>
+<tr>
+<td>FileSystemXmlApplicationContext</td>
+<td>通过文件系统路径读取 XML 格式的配置文件创建 IOC 容器对象</td>
+</tr>
+<tr>
+<td>AnnotationConfigApplicationContext</td>
+<td>通过读取Java配置类创建 IOC 容器对象</td>
+</tr>
+<tr>
+<td>WebApplicationContext</td>
+<td>专门为 Web 应用准备，基于 Web 环境创建 IOC 容器对象，并将对象引入存入 ServletContext 域中。</td>
+</tr>
+</tbody></table>
+<p><img src="https://dzc2000919.oss-cn-shanghai.aliyuncs.com/zyx_images/202401202014826.png"></p>
+<p>SpringIOC容器管理配置方式：XML配置方式（最早）、<strong>注解方式和Java配置类方式（常用）</strong></p>
+<p>总结：</p>
+<ul>
+<li><p><strong>IoC容器</strong><br>Spring IoC 容器，负责实例化、配置和组装 bean（组件）核心容器。容器通过读取配置元数据来获取有关要实例化、配置和组装组件的指令。</p>
+</li>
+<li><p><strong>IoC（Inversion of Control）控制反转</strong><br>IoC 主要是针对对象的创建和调用控制而言的，也就是说，当应用程序需要使用一个对象时，不再是应用程序直接创建该对象，而是由 IoC 容器来创建和管理，即<strong>控制权由应用程序转移到 IoC 容器</strong>中，也就是“反转”了控制权。这种方式基本上是通过<strong>依赖查找</strong>的方式来实现的，即 IoC 容器维护着构成应用程序的对象，并负责创建这些对象。</p>
+</li>
+<li><p><strong>DI (Dependency Injection) 依赖注入</strong><br>DI 是指在组件之间传递依赖关系的过程中，<strong>将依赖关系在容器内部进行处理</strong>，这样就不必在应用程序代码中硬编码对象之间的依赖关系，实现了对象之间的解耦合。在 Spring 中，DI 是通过<strong>XML 配置文件或注解的方式</strong>实现的。它提供了三种形式的依赖注入：<strong>构造函数注入、Setter 方法注入和接口注入</strong>。</p>
+</li>
+</ul>
+<h1 id="SpringIOC的实践与应用"><a href="#SpringIOC的实践与应用" class="headerlink" title="SpringIOC的实践与应用"></a>SpringIOC的实践与应用</h1><p>步骤：</p>
+<ol>
+<li>编写配置信息，配置文件(xml,注解，配置)，组件类信息和组件之间的引用关系<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean id=&quot;...&quot; [1] class=&quot;...&quot; [2]&gt;  </span><br><span class="line">    &lt;!-- collaborators and configuration for this bean go here --&gt;</span><br><span class="line">  &lt;/bean&gt;</span><br></pre></td></tr></table></figure></li>
+<li>实例化IOC容器对象(ApplicationContext 构造函数)</li>
+<li>在Java代码中获取组件（getBean）</li>
+</ol>
+<h2 id="1-基于XML配置方式管理Bean"><a href="#1-基于XML配置方式管理Bean" class="headerlink" title="1.基于XML配置方式管理Bean"></a>1.基于XML配置方式管理Bean</h2><p><img src="https://dzc2000919.oss-cn-shanghai.aliyuncs.com/zyx_images/202401211956124.png"></p>
+
+      </div>
+    </div>
+  </article>
+  <div class="post__foot">
+    
+    <div class="post-nav">
+  
+    <div class="post-nav-item-left"></div>
+  
+  <div class="vhr"></div>
+  
+    <a class="post-nav-item-right" href="/2024/01/18/Maven/">
+      <div class="text-align">
+        <span class="text-small">下一篇</span>
+        <svg t="1670570876164"
+             class="icon"
+             viewBox="0 0 1024 1024"
+             transform="scale(-1,-1)"
+             width="16"
+             height="16">
+          <path d="M384 512L731.733333 202.666667c17.066667-14.933333 19.2-42.666667 4.266667-59.733334-14.933333-17.066667-42.666667-19.2-59.733333-4.266666l-384 341.333333c-10.666667 8.533333-14.933333 19.2-14.933334 32s4.266667 23.466667 14.933334 32l384 341.333333c8.533333 6.4 19.2 10.666667 27.733333 10.666667 12.8 0 23.466667-4.266667 32-14.933333 14.933333-17.066667 14.933333-44.8-4.266667-59.733334L384 512z" p-id="14596"/>
+        </svg>
+      </div>
+      Maven
+    </a>
+  
+</div>
+
+    
+      <div class="related-post">
+  <div class="related__head">
+  <a href="/tags/Java/" class="post-tag">#Java</a><a href="/tags/%E5%BC%80%E5%8F%91/" class="post-tag">#开发</a><a href="/tags/SSM/" class="post-tag">#SSM</a>
+
+</div>
+  <div class="realated__body">
+    
+      DEBUG: 请安装插件 <a target="_blank" rel="noopener" href="https://github.com/tea3/hexo-related-popular-posts">hexo-related-popular-posts</a> 或关闭 related_post 配置!
+    
+  </div>
+</div>
+
+    
+    
+  </div>
+
+    </div>
+    <div class="foot">
+      <div class="foot-inner">
+        <div class="foot__head">
+          
+            <div class="foot-line">
+              
+                <div class="matts">若</div>
+              
+                <div class="matts">无</div>
+              
+                <div class="matts">闲</div>
+              
+                <div class="matts">事</div>
+              
+                <div class="matts">挂</div>
+              
+                <div class="matts">心</div>
+              
+                <div class="matts">头</div>
+              
+            </div>
+          
+            <div class="foot-line">
+              
+                <div class="matts">便</div>
+              
+                <div class="matts">是</div>
+              
+                <div class="matts">人</div>
+              
+                <div class="matts">间</div>
+              
+                <div class="matts">好</div>
+              
+                <div class="matts">时</div>
+              
+                <div class="matts">节</div>
+              
+            </div>
+          
+        </div>
+        <div class="foot__body">
+          
+            <div class="foot-item">
+              <div class="foot-item__head">朋友</div>
+              <div class="foot-item__body">
+                
+                  <div class="text">
+                    <img alt="link" height="20px" width="20px" src="/images/icon/icon-link.svg"/>
+                    <a class="foot-link" target="_blank" rel="noopener" href="https://carriemint.github.io">芋圆的主页</a>
+                  </div>
+                
+                <div class="text">
+                  <img alt="link" height="20px" width="20px" src="/images/icon/icon-link+.svg"/>
+                  <a class="foot-link"
+                     href="mailto:863162796@qq.com?subject=%E7%94%B3%E8%AF%B7%20Hozen.site%20%E7%9A%84%E5%8F%8B%E9%93%BE%E4%BD%8D%E7%BD%AE">
+                  申请友链</a>
+                </div>
+              </div>
+            </div>
+          
+          
+            <div class="foot-item">
+              <div class="foot-item__head">账号</div>
+              <div class="foot-item__body">
+                
+                  <div class="text">
+                    <img alt="link" height="20px" width="20px" src="/images/logo-github.svg"/>
+                    <a class="foot-link" target="_blank" rel="noopener" href="https://github.com/carriemint">carriemint</a>
+                  </div>
+                
+              </div>
+            </div>
+          
+          <div class="foot-item">
+            <div class="foot-item__head">联系</div>
+            <div class="foot-item__body">
+              <div class="text">
+                <img alt="link" height="20px" width="20px" src="/images/icon/icon-email.svg"/>
+                <a class="foot-link" href="mailto:863162796@qq.com">863162796@qq.com</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="copyright">
+          <a href="http://example.com">芋圆明天不困</a> &nbsp;|&nbsp;由&nbsp;<a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>&nbsp;及&nbsp;
+          <svg width="20" height="20" viewBox="0 0 725 725">
+            <path fill-rule="evenodd" fill="rgb(221, 221, 221)" d="M145.870,236.632 L396.955,103.578 L431.292,419.44 L156.600,522.53 L145.870,236.632 Z"/>
+            <path fill-rule="evenodd" fill="rgb(159, 159, 159)" d="M396.955,103.578 L564.345,234.486 L611.558,513.469 L431.292,419.44 L396.955,103.578 Z"/>
+            <path fill-rule="evenodd" fill="rgb(0, 0, 0)" d="M431.292,419.44 L611.558,513.469 L358.327,595.18 L156.600,522.53 L431.292,419.44 Z"/>
+          </svg>
+          <a target="_blank" rel="noopener" href="https://github.com/hooozen/hexo-theme-tranquility">致远</a>&nbsp;驱动
+        </div>
+      </div>
+    </div>
+    
+    
+  
+
+  </body>
+</html>
