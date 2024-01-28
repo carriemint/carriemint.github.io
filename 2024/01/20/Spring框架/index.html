@@ -206,7 +206,110 @@
 <li>实例化IOC容器对象(ApplicationContext 构造函数)</li>
 <li>在Java代码中获取组件（getBean）</li>
 </ol>
-<h2 id="1-基于XML配置方式管理Bean"><a href="#1-基于XML配置方式管理Bean" class="headerlink" title="1.基于XML配置方式管理Bean"></a>1.基于XML配置方式管理Bean</h2><p><img src="https://dzc2000919.oss-cn-shanghai.aliyuncs.com/zyx_images/202401211956124.png"></p>
+<h2 id="1-基于XML配置方式Bean（组件）管理"><a href="#1-基于XML配置方式Bean（组件）管理" class="headerlink" title="1.基于XML配置方式Bean（组件）管理"></a>1.基于XML配置方式Bean（组件）管理</h2><p>定义xml文件，声明组件类信息，给Spring的IOC容器管理</p>
+<center><img src="https://dzc2000919.oss-cn-shanghai.aliyuncs.com/zyx_images/202401211956124.png" width="50%" height="50%"></center>
+
+<h3 id="实验一：Bean信息声明配置IOC"><a href="#实验一：Bean信息声明配置IOC" class="headerlink" title="实验一：Bean信息声明配置IOC"></a>实验一：Bean信息声明配置IOC</h3><p>实例化对象：</p>
+<ul>
+<li><strong>构造函数实例化（无参构造函数，有参构造函数9（DI））</strong></li>
+<li><strong>工厂模式实例化（静态工厂，非静态工厂）</strong></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;</span><br><span class="line">       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><br><span class="line">       xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd&quot;&gt;</span><br><span class="line">&lt;!--    1.无参构造函数实例化组件</span><br><span class="line">bean一个组件信息，id组件标识，class组件的类的全限定符</span><br><span class="line">一个组件类-声名2个组件信息-默认单例模式-实例化2个组件对象</span><br><span class="line">--&gt;</span><br><span class="line">    &lt;bean id=&quot;happyComponent&quot; class=&quot;com.carrie.ioc01.HappyComponent&quot;/&gt;</span><br><span class="line">&lt;!--    2.静态工厂类 声明工厂方法</span><br><span class="line">factory-method 静态工厂方法（必须静态方法）</span><br><span class="line">--&gt;</span><br><span class="line">    &lt;bean id=&quot;clientService&quot; class=&quot;com.carrie.ioc01.ClientService&quot; factory-method=&quot;createInstance&quot;/&gt;</span><br><span class="line">&lt;!--    3.非静态工厂，实例工厂</span><br><span class="line">配置工厂类的组件信息;</span><br><span class="line">指定非静态工厂对象(组件)和方法名(必须非静态)，配置生成的ioc信息</span><br><span class="line">--&gt;</span><br><span class="line">    &lt;bean id=&quot;defaultServiceLocator&quot; class=&quot;com.carrie.ioc01.DefaultServiceLocator&quot;/&gt;</span><br><span class="line">    &lt;bean id=&quot;clientService2&quot; factory-bean=&quot;defaultServiceLocator&quot; factory-method=&quot;createClientServiceInstance&quot;/&gt;</span><br><span class="line">&lt;/beans&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="实验二：Bean依赖注入配置（DI）"><a href="#实验二：Bean依赖注入配置（DI）" class="headerlink" title="实验二：Bean依赖注入配置（DI）"></a>实验二：Bean依赖注入配置（DI）</h3><p>实现IOC容器中Bean之间的引用（依赖注入配置）</p>
+<ul>
+<li><strong>基于构造函数的依赖注入（单个构造参数，多个参数的构造函数）</strong></li>
+<li><strong>基于Setter的依赖注入</strong></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;</span><br><span class="line">       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><br><span class="line">       xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd&quot;&gt;</span><br><span class="line">&lt;!--引用和被引用的组件，必须都在ioc容器--&gt;</span><br><span class="line">&lt;!--    1.单个构造参数注入--&gt;</span><br><span class="line">&lt;!--    写的顺序没有影响，高级容器，先创建所有的对象，再进行属性赋值--&gt;</span><br><span class="line">    &lt;bean id=&quot;userDao&quot; class=&quot;com.carrie.ioc02.UserDao&quot;/&gt;</span><br><span class="line">    &lt;bean id=&quot;userService&quot; class=&quot;com.carrie.ioc02.UserService&quot;&gt;</span><br><span class="line">&lt;!--        需要传入构造参数</span><br><span class="line">constructor-arg:构造参数传值，value直接属性值（int，String），ref引用其他的bean（id值）</span><br><span class="line">--&gt;</span><br><span class="line">        &lt;constructor-arg  ref=&quot;userDao&quot;/&gt;</span><br><span class="line">    &lt;/bean&gt;</span><br><span class="line">&lt;!--    2.多个构造参数--&gt;</span><br><span class="line">    &lt;bean id=&quot;userService1&quot; class=&quot;com.carrie.ioc02.UserService&quot;&gt;</span><br><span class="line">&lt;!--        构造参数的顺序--&gt;</span><br><span class="line">        &lt;constructor-arg value=&quot;18&quot;/&gt;</span><br><span class="line">        &lt;constructor-arg value=&quot;zyx&quot;/&gt;</span><br><span class="line">        &lt;constructor-arg ref=&quot;userDao&quot;/&gt;</span><br><span class="line">    &lt;/bean&gt;</span><br><span class="line">&lt;!--构造参数的名称写（推荐！！！！）--&gt;</span><br><span class="line">    &lt;bean id=&quot;userService2&quot; class=&quot;com.carrie.ioc02.UserService&quot;&gt;</span><br><span class="line">        &lt;constructor-arg name=&quot;age&quot; value=&quot;18&quot;/&gt;</span><br><span class="line">        &lt;constructor-arg name=&quot;name&quot; value=&quot;zyx&quot;/&gt;</span><br><span class="line">        &lt;constructor-arg name=&quot;userDao&quot; ref=&quot;userDao&quot;/&gt;</span><br><span class="line">    &lt;/bean&gt;</span><br><span class="line">&lt;!--   构造参数的下标，index --&gt;</span><br><span class="line">    &lt;bean id=&quot;userService&quot; class=&quot;com.carrie.ioc02.UserService&quot;&gt;</span><br><span class="line">        &lt;constructor-arg index=&quot;0&quot; value=&quot;18&quot;/&gt;</span><br><span class="line">        &lt;constructor-arg index=&quot;1&quot; value=&quot;zyx&quot;/&gt;</span><br><span class="line">        &lt;constructor-arg index=&quot;2&quot; ref=&quot;userDao&quot;/&gt;</span><br><span class="line">    &lt;/bean&gt;</span><br><span class="line"></span><br><span class="line">&lt;!--    3.触发setter方法注入--&gt;</span><br><span class="line">    &lt;bean id=&quot;movieFineder&quot; class=&quot;com.carrie.ioc02.MovieFinder&quot;/&gt;</span><br><span class="line">    &lt;bean id=&quot;simpleMovieLister&quot; class=&quot;com.carrie.ioc02.SimpleMovieLister&quot;&gt;</span><br><span class="line">&lt;!--       setter方法去掉set首字母小写的值(本质找的是方法名！！！)</span><br><span class="line">value/ref 二选一</span><br><span class="line">--&gt;</span><br><span class="line">        &lt;property name=&quot;movieName&quot;  value=&quot;下雪了&quot;/&gt;</span><br><span class="line">        &lt;property name=&quot;movieFinder&quot; ref=&quot;movieFineder&quot;/&gt;</span><br><span class="line">    &lt;/bean&gt;</span><br><span class="line"></span><br><span class="line">&lt;/beans&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="实验三：IOC容器的创建和使用"><a href="#实验三：IOC容器的创建和使用" class="headerlink" title="实验三：IOC容器的创建和使用"></a>实验三：IOC容器的创建和使用</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">package com.carrie.test;</span><br><span class="line"></span><br><span class="line">import com.carrie.ioc03.HappyComponent;</span><br><span class="line">import org.junit.jupiter.api.Test;</span><br><span class="line">import org.springframework.context.ApplicationContext;</span><br><span class="line">import org.springframework.context.support.ClassPathXmlApplicationContext;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">public class SpringIoCTEst &#123;</span><br><span class="line">//    创建IoC容器</span><br><span class="line">    public void createIoC()&#123;</span><br><span class="line">        /*</span><br><span class="line">        接口：BeanFactory；ApplicationContext，扩展的接口</span><br><span class="line">        实现类：</span><br><span class="line">         */</span><br><span class="line">        //法1.直接创建文件</span><br><span class="line">        ApplicationContext applicationContext=new ClassPathXmlApplicationContext(&quot;spring-03.xml&quot;);</span><br><span class="line">        //法2.先创建ioc容器，在指定配置文件(外部配置)</span><br><span class="line">        //源码的配置过程</span><br><span class="line">        ClassPathXmlApplicationContext applicationContext1=new ClassPathXmlApplicationContext();</span><br><span class="line">        applicationContext1.setConfigLocations(&quot;spring-03.xml&quot;);</span><br><span class="line">        applicationContext1.refresh();//刷新才有效</span><br><span class="line">    &#125;</span><br><span class="line">/*</span><br><span class="line">从IoC容器中获取组件</span><br><span class="line"> */@Test</span><br><span class="line">//方法前加@Test，可以测试</span><br><span class="line">    public void getBeanFromIoC()&#123;</span><br><span class="line">        //创建ioc容器</span><br><span class="line">        ClassPathXmlApplicationContext applicationContext=new ClassPathXmlApplicationContext();</span><br><span class="line">        applicationContext.setConfigLocations(&quot;spring-03.xml&quot;);</span><br><span class="line">        applicationContext.refresh();</span><br><span class="line">        //1.beanID,返回类型是Object，需要强转</span><br><span class="line">        HappyComponent happyComponent = (HappyComponent) applicationContext.getBean(&quot;happyComponent&quot;);</span><br><span class="line">        //2.beanID，指定Bean的类型</span><br><span class="line">        HappyComponent happyComponent1 = applicationContext.getBean(&quot;happyComponent&quot;, HappyComponent.class);</span><br><span class="line">        //3.根据类型获取</span><br><span class="line">        //TODO：只能有一个同类型的bean，多个会出现异常</span><br><span class="line">        //TODO：ioc配置一定是实现类，但可以根据接口类型赋值 instanceOf ioc容器的类型==true</span><br><span class="line">        HappyComponent happyComponent2 = applicationContext.getBean(HappyComponent.class);</span><br><span class="line">        /*</span><br><span class="line">        (HappyComponent implement A)</span><br><span class="line">        A happyComponent2 = applicationContext.getBean(A.class);</span><br><span class="line">        happyComponent2.dowork();</span><br><span class="line">         */</span><br><span class="line">    System.out.println(happyComponent==happyComponent1);</span><br><span class="line">    System.out.println(happyComponent2==happyComponent1);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="实验四：高级特性：bean的作用域和周期方法配置"><a href="#实验四：高级特性：bean的作用域和周期方法配置" class="headerlink" title="实验四：高级特性：bean的作用域和周期方法配置"></a>实验四：高级特性：bean的作用域和周期方法配置</h3><ul>
+<li>周期方法<br>周期方法：到对应时间才<strong>主动调用</strong>，只能等待和编写对应的逻辑<br>在组件类中定义方法，然后当IoC容器<strong>实例化</strong>和<strong>销毁组件对象</strong>的时候进行调用</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">public class JavaBean &#123;</span><br><span class="line">    /*</span><br><span class="line">    必须是public，void，无参数;</span><br><span class="line">    命名随意</span><br><span class="line">     */</span><br><span class="line">    //初始化</span><br><span class="line">    public void init()&#123;</span><br><span class="line">        System.out.println(&quot;JavaBean.init&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    //销毁</span><br><span class="line">    public  void clear()&#123;</span><br><span class="line">        System.out.println(&quot;destroy&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"> /*</span><br><span class="line">    测试ioc容器的初始化和destroy</span><br><span class="line">     */</span><br><span class="line">    @Test</span><br><span class="line">    public void test_04()&#123;</span><br><span class="line">     ClassPathXmlApplicationContext applicationContext=new ClassPathXmlApplicationContext(&quot;spring-04.xml&quot;);</span><br><span class="line">     //ioc容器调用destroy</span><br><span class="line">        // 正常结束ioc容器</span><br><span class="line">        applicationContext.close();</span><br><span class="line">    &#125;</span><br><span class="line">  </span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>作用域<br>准备好组件类，配置文件，到ioc容器（java文件），需要将配置文件转化为BeanDefinition类，再反射实例化得到组件对象，检查BeanDefinition中的scope【单例（默认）或多例】<br>单例（singleton），外部多次调用都是一个对象；多例（prototype），调用一次就是一个新的对象</li>
+</ul>
+<ol>
+<li>作用域可选值<table>
+<thead>
+<tr>
+<th>取值</th>
+<th>含义</th>
+<th>创建对象的时机</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>singleton</td>
+<td>在 IOC 容器中，这个 bean 的对象始终为单实例</td>
+<td><strong>IOC 容器初始化时</strong></td>
+<td>是</td>
+</tr>
+<tr>
+<td>prototype</td>
+<td>这个 bean 在 IOC 容器中有多个实例</td>
+<td><strong>获取 bean 时（getBean）</strong></td>
+<td>否</td>
+</tr>
+</tbody></table>
+</li>
+</ol>
+<p>如果是在WebApplicationContext环境下还会有另外两个作用域（但不常用）：</p>
+<table>
+<thead>
+<tr>
+<th>取值</th>
+<th>含义</th>
+<th>创建对象的时机</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>request</td>
+<td>请求范围内有效的实例</td>
+<td>每次请求</td>
+<td>否</td>
+</tr>
+<tr>
+<td>session</td>
+<td>会话范围内有效的实例</td>
+<td>每次会话</td>
+<td>否</td>
+</tr>
+</tbody></table>
+<h3 id="实验五：高级特性：FactoryBean的特性和使用"><a href="#实验五：高级特性：FactoryBean的特性和使用" class="headerlink" title="实验五：高级特性：FactoryBean的特性和使用"></a>实验五：高级特性：FactoryBean的特性和使用</h3><p>FactoryBean：标准化工厂<br>重写getObject（）：编写实例化逻辑（配置文件中，不用写factory-method，只需要配置工厂类即可）</p>
+<p><strong>用于配置复杂的Bean对象，创建过程存储在FactoryBean的getObject方法</strong></p>
+<p><code>FactoryBean&lt;T&gt;</code> 接口提供三种方法：</p>
+<ul>
+<li><code>T getObject()</code>:<br>  返回此工厂创建的对象的实例。该返回值会被存储到IoC容器！</li>
+<li><code>boolean isSingleton()</code>:<br>  如果此 <code>FactoryBean</code> 返回单例，则返回 <code>true</code> ，否则返回 <code>false</code> 。此方法的默认实现返回 <code>true</code> （注意，lombok插件使用，可能影响效果）。</li>
+<li><code>Class&lt;?&gt; getObjectType()</code>: 返回 <code>getObject()</code> 方法返回的对象类型，如果事先不知道类型，则返回 <code>null</code> 。</li>
+</ul>
+<ol>
+<li>FactoryBean使用场景<ol>
+<li>代理类的创建</li>
+<li>第三方框架整合</li>
+<li>复杂对象实例化等</li>
+</ol>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ClassPathXmlApplicationContext applicationContext=new ClassPathXmlApplicationContext(&quot;spring-05.xml&quot;);</span><br><span class="line">        JavaBean javaBean = applicationContext.getBean(&quot;javaBean&quot;, JavaBean.class);</span><br><span class="line">        //TODO:FactoryBean也在IoC容器，标识符为 &amp;id</span><br><span class="line">        Object javaBean2 = applicationContext.getBean(&quot;&amp;javaBean&quot;);</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>FactoryBean和BeanFactory区别</li>
+</ol>
+<ul>
+<li><strong>FactoryBean</strong><br>Spring 中一种<strong>特殊的 bean</strong>，可以在<strong>getObject() 工厂方法自定义的逻辑创建Bean</strong>。是一种能够生产其他 Bean 的 Bean。FactoryBean 在容器启动时被创建，而在实际使用时则是通过<strong>调用 getObject() 方法来得到其所生产的 Bean</strong>。FactoryBean 可以自定义任何所需的初始化逻辑，生产出一些定制化的 bean。<br>一般情况下，<strong>整合第三方框架</strong>，都是通过定义FactoryBean实现！！！</li>
+<li><strong>BeanFactory</strong><br><strong>Spring 框架的基础</strong>，其作为一个<strong>定义了容器基本行为的顶级接口</strong>，例如管理 bean 的生命周期、配置文件的加载和解析、bean 的装配和依赖注入等。BeanFactory 接口提供了访问 bean 的方式，例如 getBean() 方法获取指定的 bean 实例。它可以从不同的来源（例如 Mysql 数据库、XML 文件、Java 配置类等）获取 bean 定义，并将其转换为 bean 实例。同时，BeanFactory 还包含很多子类（例如，ApplicationContext 接口）提供了额外的强大功能。</li>
+</ul>
+<p>总的来说，FactoryBean 和 BeanFactory 的区别主要在于前者是用于<strong>创建 bean 的接口</strong>，它提供了更加灵活的初始化定制功能，而后者是用于<strong>管理 bean 的框架基础接口</strong>，提供了基本的<strong>容器功能和 bean 生命周期管理</strong>。</p>
+<h3 id="实验六：基于XML方式整合三层架构组件"><a href="#实验六：基于XML方式整合三层架构组件" class="headerlink" title="实验六：基于XML方式整合三层架构组件"></a>实验六：基于XML方式整合三层架构组件</h3><ul>
+<li><strong>JdbcTemplate</strong><br>为了在特定领域帮助我们简化代码，Spring 封装了很多 『Template』形式的模板类。例如： JdbcTemplate、RedisTemplate、RestTemplate等等。</li>
+</ul>
 
       </div>
     </div>
