@@ -5,7 +5,7 @@
     <meta name="viewport" content="initial-scale=1.0, width=device-width"/>
     <title>
       
-        技术 | 芋圆明天不困
+        Mybatis | 芋圆明天不困
       
     </title>
     <meta name="description" content=""/>
@@ -58,7 +58,8 @@
           href='/css/layout.css'/>
     
     
-  <link rel="stylesheet" type="text/css" href="/css/category.css" />
+  <link rel="stylesheet" type="text/css" href="/css/post.css" />
+  
 
   <meta name="generator" content="Hexo 6.3.0"></head>
   <body>
@@ -83,166 +84,87 @@
     </div>
     <div class="body">
       
-  <div class="wall wall-category--plain">
-    <div class="wall-main">
-      <div class="wall-category-title">
-        <div class="title-icon"
-             style="background-image: url(/images/icon/zhuanqiang.svg)"></div>
-        技术
+  <article class="post-content">
+    <div class="post-inner">
+      <div class="post-content__head">
+        <div class="post-title">Mybatis</div>
+        <div class="post-info">
+          
+  <a href="/tags/Java/" class="post-tag">#Java</a><a href="/tags/%E5%BC%80%E5%8F%91/" class="post-tag">#开发</a><a href="/tags/SSM/" class="post-tag">#SSM</a>
+
+
+          <span class="post-date">2024-02-22</span>
+        </div>
       </div>
-      <div class="wall-category-description">不争馒头争口气</div>
-      <div class="wall-category-tags">
-        <div id="tags-outer"><a href="/tags/Java/" style="font-size: 1em;">Java</a> <a href="/tags/LeetCode/" style="font-size: 1em;">LeetCode</a> <a href="/tags/SSM/" style="font-size: 1em;">SSM</a> <a href="/tags/%E5%8F%8D%E5%B0%84/" style="font-size: 1em;">反射</a> <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" style="font-size: 1em;">多线程</a> <a href="/tags/%E5%BC%80%E5%8F%91/" style="font-size: 1em;">开发</a> <a href="/tags/%E6%95%B0%E7%BB%84/" style="font-size: 1em;">数组</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/" style="font-size: 1em;">网络编程</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 1em;">计算机网络</a> <a href="/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 1em;">面试</a></div>
+      
+      <div class="post-content__body">
+        
+          <div class="post-gallery">
+            
+          </div>
+        
+        <h1 id="1-Mybatis简介"><a href="#1-Mybatis简介" class="headerlink" title="1.Mybatis简介"></a>1.Mybatis简介</h1><p>MyBatis 是一款持久层框架，它支持自定义 SQL、存储过程以及高级映射。MyBatis 可以通过简单的 XML 或注解来配置和映射原始类型、接口和 Java <strong>POJO</strong>（Plain Old Java Objects，普通老式 Java 对象）为数据库中的记录。(<strong>推荐使用xml配置文件</strong>)</p>
+<p>持久性框架对比：</p>
+<ul>
+<li>JDBC：sql语句夹杂在java代码耦合度高，代码长，开发效率低</li>
+<li>Hibernate和JPA：封装程度高，自动生成sql语句，不容易特殊优化；反射操作多，数据库性能下降。</li>
+<li>MyBatis：sql（专注数据）和java代码（专注业务）分开。</li>
+</ul>
+<p>开发效率：Hibernate&gt;Mybatis&gt;JDBC<br>运行效率：JDBC&gt;Mybatis&gt;Hibernate（越封装越慢）</p>
+<h2 id="快速入门（MyBatis3）"><a href="#快速入门（MyBatis3）" class="headerlink" title="快速入门（MyBatis3）"></a>快速入门（MyBatis3）</h2><ul>
+<li>原来的：xxxDao接口，规定方法；xxxDaoImpl实现类，数据库动作</li>
+<li>mybatis：xxxMapper接口，规定方法；xxxMapper.xml 接口对应方法的sql语句</li>
+</ul>
+<p>xml文件放在resource里，不会被打包。</p>
+<p>步骤：导入依赖；准备实体类；创建xxxMapper接口，规定方法（增删改查）；写xxxMapper.xml，使用对应的标签写sql语句；mybatis的配置文件，规定连接的数据库和对应的xxxMapper.xml配置文件；使用mybatisapi进行数据库查找（SqlSessionFactory，SqlSession，getMapper(接口.class)）</p>
+<ul>
+<li>SqlSession：代表Java程序和数据库之间的会话。（HttpSession是Java程序和浏览器之间的会话）</li>
+<li>SqlSessionFactory：是“生产”SqlSession的“工厂”。</li>
+<li>工厂模式：如果创建某一个对象，使用的过程基本固定，那么我们就可以把创建这个对象的相关代码封装到一个“工厂类”中，以后都使用这个工厂类来“生产”我们需要的对象。</li>
+</ul>
+<p><img src="https://dzc2000919.oss-cn-shanghai.aliyuncs.com/zyx_images/202402272041201.png"></p>
+<p>ibatis:不用写接口，直接创建mapper.xml文件内部编写sql语句</p>
+<h1 id="2-Mybatis基本使用"><a href="#2-Mybatis基本使用" class="headerlink" title="2.Mybatis基本使用"></a>2.Mybatis基本使用</h1><h1 id="3-Mybatis多表映射"><a href="#3-Mybatis多表映射" class="headerlink" title="3.Mybatis多表映射"></a>3.Mybatis多表映射</h1><h1 id="4-Mybatis动态语句"><a href="#4-Mybatis动态语句" class="headerlink" title="4.Mybatis动态语句"></a>4.Mybatis动态语句</h1><h1 id="5-Mybatis高级扩展"><a href="#5-Mybatis高级扩展" class="headerlink" title="5.Mybatis高级扩展"></a>5.Mybatis高级扩展</h1><h1 id="6-总结"><a href="#6-总结" class="headerlink" title="6.总结"></a>6.总结</h1>
       </div>
     </div>
-  </div>
-  <div class="post-list">
+  </article>
+  <div class="post__foot">
     
-      
+    <div class="post-nav">
   
-  <div class="post-card">
-    <div class="post__head">
-      <a href="/2024/02/22/Mybatis/" class="post-title hover-line">Mybatis</a>
-      
-    </div>
-    <div class="post__body">
-      
-      <div class="post-excerpt"></div>
-    </div>
-    <div class="post__foot">
-      <div class="post-tags">
+    <div class="post-nav-item-left"></div>
+  
+  <div class="vhr"></div>
+  
+    <a class="post-nav-item-right" href="/2024/01/20/Spring%E6%A1%86%E6%9E%B6/">
+      <div class="text-align">
+        <span class="text-small">下一篇</span>
+        <svg t="1670570876164"
+             class="icon"
+             viewBox="0 0 1024 1024"
+             transform="scale(-1,-1)"
+             width="16"
+             height="16">
+          <path d="M384 512L731.733333 202.666667c17.066667-14.933333 19.2-42.666667 4.266667-59.733334-14.933333-17.066667-42.666667-19.2-59.733333-4.266666l-384 341.333333c-10.666667 8.533333-14.933333 19.2-14.933334 32s4.266667 23.466667 14.933334 32l384 341.333333c8.533333 6.4 19.2 10.666667 27.733333 10.666667 12.8 0 23.466667-4.266667 32-14.933333 14.933333-17.066667 14.933333-44.8-4.266667-59.733334L384 512z" p-id="14596"/>
+        </svg>
+      </div>
+      Spring框架
+    </a>
+  
+</div>
+
+    
+      <div class="related-post">
+  <div class="related__head">
   <a href="/tags/Java/" class="post-tag">#Java</a><a href="/tags/%E5%BC%80%E5%8F%91/" class="post-tag">#开发</a><a href="/tags/SSM/" class="post-tag">#SSM</a>
 
 </div>
-    </div>
+  <div class="realated__body">
+    
+      DEBUG: 请安装插件 <a target="_blank" rel="noopener" href="https://github.com/tea3/hexo-related-popular-posts">hexo-related-popular-posts</a> 或关闭 related_post 配置!
+    
   </div>
-
-  
-  <div class="post-card">
-    <div class="post__head">
-      <a href="/2024/01/20/Spring%E6%A1%86%E6%9E%B6/" class="post-title hover-line">Spring框架</a>
-      
-    </div>
-    <div class="post__body">
-      
-      <div class="post-excerpt"></div>
-    </div>
-    <div class="post__foot">
-      <div class="post-tags">
-  <a href="/tags/Java/" class="post-tag">#Java</a><a href="/tags/%E5%BC%80%E5%8F%91/" class="post-tag">#开发</a><a href="/tags/SSM/" class="post-tag">#SSM</a>
-
 </div>
-    </div>
-  </div>
-
-  
-  <div class="post-card">
-    <div class="post__head">
-      <a href="/2024/01/18/Maven/" class="post-title hover-line">Maven</a>
-      
-    </div>
-    <div class="post__body">
-      
-      <div class="post-excerpt"></div>
-    </div>
-    <div class="post__foot">
-      <div class="post-tags">
-  <a href="/tags/Java/" class="post-tag">#Java</a><a href="/tags/%E5%BC%80%E5%8F%91/" class="post-tag">#开发</a><a href="/tags/SSM/" class="post-tag">#SSM</a>
-
-</div>
-    </div>
-  </div>
-
-  
-  <div class="post-card">
-    <div class="post__head">
-      <a href="/2024/01/16/%E9%9D%A2%E8%AF%95%E7%BB%8F%E5%85%B8150%E9%A2%98/" class="post-title hover-line">面试经典150题</a>
-      
-    </div>
-    <div class="post__body">
-      
-      <div class="post-excerpt"></div>
-    </div>
-    <div class="post__foot">
-      <div class="post-tags">
-  <a href="/tags/LeetCode/" class="post-tag">#LeetCode</a><a href="/tags/%E6%95%B0%E7%BB%84/" class="post-tag">#数组</a>
-
-</div>
-    </div>
-  </div>
-
-  
-  <div class="post-card">
-    <div class="post__head">
-      <a href="/2024/01/15/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/" class="post-title hover-line">网络编程</a>
-      
-    </div>
-    <div class="post__body">
-      
-      <div class="post-excerpt"></div>
-    </div>
-    <div class="post__foot">
-      <div class="post-tags">
-  <a href="/tags/Java/" class="post-tag">#Java</a><a href="/tags/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/" class="post-tag">#网络编程</a><a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" class="post-tag">#计算机网络</a><a href="/tags/%E5%8F%8D%E5%B0%84/" class="post-tag">#反射</a>
-
-</div>
-    </div>
-  </div>
-
-  
-  <div class="post-card">
-    <div class="post__head">
-      <a href="/2024/01/15/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E6%89%A9%E5%B1%95%E5%86%85%E5%AE%B9/" class="post-title hover-line">多线程扩展内容</a>
-      
-    </div>
-    <div class="post__body">
-      
-      <div class="post-excerpt"></div>
-    </div>
-    <div class="post__foot">
-      <div class="post-tags">
-  <a href="/tags/Java/" class="post-tag">#Java</a><a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" class="post-tag">#多线程</a><a href="/tags/%E9%9D%A2%E8%AF%95/" class="post-tag">#面试</a>
-
-</div>
-    </div>
-  </div>
-
-  
-  <div class="post-card">
-    <div class="post__head">
-      <a href="/2024/01/15/JAVA%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/" class="post-title hover-line">JAVA后端开发学习路线</a>
-      
-    </div>
-    <div class="post__body">
-      
-      <div class="post-excerpt"></div>
-    </div>
-    <div class="post__foot">
-      <div class="post-tags">
-  <a href="/tags/Java/" class="post-tag">#Java</a>
-
-</div>
-    </div>
-  </div>
-
-  
-  <div class="post-card">
-    <div class="post__head">
-      <a href="/2024/01/14/%E5%A4%9A%E7%BA%BF%E7%A8%8B-JUC/" class="post-title hover-line">多线程&JUC</a>
-      
-    </div>
-    <div class="post__body">
-      
-      <div class="post-excerpt"></div>
-    </div>
-    <div class="post__foot">
-      <div class="post-tags">
-  <a href="/tags/Java/" class="post-tag">#Java</a><a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" class="post-tag">#多线程</a>
-
-</div>
-    </div>
-  </div>
-
 
     
     
