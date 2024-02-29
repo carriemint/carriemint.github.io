@@ -116,7 +116,10 @@
 <li>mybatis：xxxMapper接口，规定方法；xxxMapper.xml 接口对应方法的sql语句</li>
 </ul>
 <p>xml文件放在resource里，不会被打包。</p>
-<p>步骤：导入依赖；准备实体类；创建xxxMapper接口，规定方法（增删改查）；写xxxMapper.xml，使用对应的标签写sql语句；mybatis的配置文件，规定连接的数据库和对应的xxxMapper.xml配置文件；使用mybatisapi进行数据库查找（SqlSessionFactory，SqlSession，getMapper(接口.class)）</p>
+<p><strong>步骤：导入依赖；准备实体类；创建xxxMapper接口，规定方法（增删改查）；写xxxMapper.xml，使用对应的标签写sql语句；mybatis的配置文件，规定连接的数据库和对应的xxxMapper.xml配置文件；使用mybatis api进行数据库查找（1.读取外部文件 2.创建SqlSessionFactory 3.获取SqlSession对象，自动开启jdbc 4.获取代理mapper对象，getMapper(接口.class) 5.管理资源或者提交事务）</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">testSelectEmployee</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> IOException &#123;<br><br>        <span class="hljs-comment">// 1.创建SqlSessionFactory对象</span><br>        <span class="hljs-comment">// ①声明Mybatis全局配置文件的路径</span><br>        <span class="hljs-type">String</span> <span class="hljs-variable">mybatisConfigFilePath</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;mybatis-config.xml&quot;</span>;<br><br>        <span class="hljs-comment">// ②以输入流的形式加载Mybatis配置文件</span><br>        <span class="hljs-type">InputStream</span> <span class="hljs-variable">inputStream</span> <span class="hljs-operator">=</span> Resources.getResourceAsStream(mybatisConfigFilePath);<br><br>        <span class="hljs-comment">// ③基于读取Mybatis配置文件的输入流创建SqlSessionFactory对象</span><br>        <span class="hljs-type">SqlSessionFactory</span> <span class="hljs-variable">sessionFactory</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">SqlSessionFactoryBuilder</span>().build(inputStream);<br><br>        <span class="hljs-comment">// 2.使用SqlSessionFactory对象开启一个会话（创建sqlSession）</span><br>        <span class="hljs-type">SqlSession</span> <span class="hljs-variable">session</span> <span class="hljs-operator">=</span> sessionFactory.openSession();<br><br>        <span class="hljs-comment">// 3.根据EmployeeMapper接口的Class对象获取Mapper接口类型的对象(动态代理技术)</span><br>        <span class="hljs-type">EmpMapper</span> <span class="hljs-variable">employeeMapper</span> <span class="hljs-operator">=</span> session.getMapper(EmpMapper.class);<br><br>        <span class="hljs-comment">// 4. 调用代理类方法既可以触发对应的SQL语句</span><br>        <span class="hljs-type">Employee</span> <span class="hljs-variable">employee</span> <span class="hljs-operator">=</span> employeeMapper.queryById(<span class="hljs-number">1</span>);<br>        System.out.println(<span class="hljs-string">&quot;employee = &quot;</span> + employee);<br><br>        <span class="hljs-comment">// 4.关闭SqlSession</span><br>        session.commit(); <span class="hljs-comment">//提交事务 [DQL不需要,其他需要]</span><br>        session.close(); <span class="hljs-comment">//关闭会话</span><br><br>    &#125;<br></code></pre></td></tr></table></figure>
+
+<p>tips：可以将mapper文件创建为模版，可以直接新建<br>（settings，editor，file and code template）</p>
 <ul>
 <li>SqlSession：代表Java程序和数据库之间的会话。（HttpSession是Java程序和浏览器之间的会话）</li>
 <li>SqlSessionFactory：是“生产”SqlSession的“工厂”。</li>
@@ -124,7 +127,69 @@
 </ul>
 <p><img src="https://dzc2000919.oss-cn-shanghai.aliyuncs.com/zyx_images/202402272041201.png"></p>
 <p>ibatis:不用写接口，直接创建mapper.xml文件内部编写sql语句</p>
-<h1 id="2-Mybatis基本使用"><a href="#2-Mybatis基本使用" class="headerlink" title="2.Mybatis基本使用"></a>2.Mybatis基本使用</h1><h1 id="3-Mybatis多表映射"><a href="#3-Mybatis多表映射" class="headerlink" title="3.Mybatis多表映射"></a>3.Mybatis多表映射</h1><h1 id="4-Mybatis动态语句"><a href="#4-Mybatis动态语句" class="headerlink" title="4.Mybatis动态语句"></a>4.Mybatis动态语句</h1><h1 id="5-Mybatis高级扩展"><a href="#5-Mybatis高级扩展" class="headerlink" title="5.Mybatis高级扩展"></a>5.Mybatis高级扩展</h1><h1 id="6-总结"><a href="#6-总结" class="headerlink" title="6.总结"></a>6.总结</h1>
+<h1 id="2-Mybatis基本使用"><a href="#2-Mybatis基本使用" class="headerlink" title="2.Mybatis基本使用"></a>2.Mybatis基本使用</h1><p>mybatis配置文件：</p>
+<center><img src="https://dzc2000919.oss-cn-shanghai.aliyuncs.com/zyx_images/202402291759867.png" width="70%" height="70%"></center>
+
+<p>environments标签可以配置多个环境，但SqlSessionFactory只能应用一个环境（default）</p>
+<ul>
+<li><p>transactionManage事务管理器（两种，JDBC的提交和回滚功能，自动开启事务；managed，不提交回滚，不会自动开启事务）</p>
+</li>
+<li><p>datasource数据源，是否需要连接池（UNPOOLED，每次请求打开和关闭连接池，慢）</p>
+</li>
+<li><p>mybatis日志输出配置<br>settings（logImpl）：STOUT_LOGGING,控制台输出system.out（或者其他的日志系统slf4<br>j）</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">settings</span>&gt;</span><br>  <span class="hljs-comment">&lt;!-- SLF4J 选择slf4j输出！ --&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">setting</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;logImpl&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;SLF4J&quot;</span>/&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">settings</span>&gt;</span><br></code></pre></td></tr></table></figure></li>
+<li><p>#{}：占位符+赋值，emp_id&#x3D;?,?&#x3D;赋值（？只能替代值的位置，不能替代容器名，标签，列名，sql关键字）</p>
+</li>
+<li><p>${}：字符串拼接，”emp_id&#x3D;”+id（动态的标签，列名，sql关键字，使用$）</p>
+</li>
+</ul>
+<p><strong>推荐使用#{key},防止注入攻击的问题</strong></p>
+<h2 id="数据输入"><a href="#数据输入" class="headerlink" title="数据输入"></a>数据输入</h2><p><img src="https://dzc2000919.oss-cn-shanghai.aliyuncs.com/zyx_images/202402291820030.png"></p>
+<p>这里数据输入具体是指上层方法（例如Service方法）调用Mapper接口时，数据传入的形式。</p>
+<ul>
+<li><p>简单类型：只包含一个值的数据类型</p>
+<ul>
+<li>基本数据类型：int、byte、short、double、……</li>
+<li>基本数据类型的包装类型：Integer、Character、Double、……</li>
+<li>字符串类型：String</li>
+</ul>
+</li>
+<li><p>复杂类型：包含多个值的数据类型</p>
+<ul>
+<li>实体类类型：Employee、Department、……</li>
+<li>集合类型：List、Set、Map、……</li>
+<li>数组类型：int[]、String[]、……</li>
+<li>复合类型：List<Employee>、实体类中包含集合……</li>
+</ul>
+</li>
+<li><p><strong>单个简单类型参数</strong>：使用#{}中可以随意命名，通常还是使用和接口方法参数同名。</p>
+</li>
+<li><p><strong>实体类类型</strong>：<br>Mapper接口中抽象方法的声明</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Java"><span class="hljs-type">int</span> <span class="hljs-title function_">insertEmployee</span><span class="hljs-params">(Employee employee)</span>;<br></code></pre></td></tr></table></figure>
+<p>SQL语句</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs XML"><span class="hljs-tag">&lt;<span class="hljs-name">insert</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;insertEmployee&quot;</span>&gt;</span><br>  insert into t_emp(emp_name,emp_salary) values(#&#123;empName&#125;,#&#123;empSalary&#125;)<br><span class="hljs-tag">&lt;/<span class="hljs-name">insert</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<p>结论：Mybatis会根据#{}中传入的数据，加工成getXxx()方法，通过反射在实体类对象中调用这个方法，从而获取到对应的数据。填充到#{}解析后的问号占位符这个位置。</p>
+</li>
+<li><p><strong>多个简单类型对象</strong><br>不能用函数的形参名字取值<br>法1:<strong>注解指定</strong><br><img src="https://dzc2000919.oss-cn-shanghai.aliyuncs.com/zyx_images/202402291830961.png"><br>法2:<strong>mybatis默认机制</strong></p>
+</li>
+</ul>
+<p>#{arg0},#{arg1}<br>#{param1},#{param2}</p>
+<ul>
+<li><strong>Map类型参数</strong><br>mapper接口不能重载！！！！<br>key即为传入的map对象的key</li>
+</ul>
+<h2 id="数据输出"><a href="#数据输出" class="headerlink" title="数据输出"></a>数据输出</h2><p>数据输出总体上有两种形式：</p>
+<ul>
+<li>增删改操作返回的受影响行数，直接使用 int 或 long 类型接收</li>
+<li><strong>查询操作的查询结果</strong>，指定查询的输出数据类型</li>
+<li>插入场景下，实现主键数据回显示</li>
+</ul>
+<ol>
+<li><p>单个简单类型<br>select标签，通过resultType指定查询返回值类型！<br>resultType &#x3D; “全限定符 ｜ 别名 ｜ 如果是返回集合类型，写范型类型即可”<br>（Mybatis 内部给常用的数据类型设定了很多别名，在mybatis官网中，typeAliases中查看，包装数据类型大写变小写Integer int，基本数据类型加下划线 _int）</p>
+</li>
+<li><p>返回实体类对象</p>
+</li>
+</ol>
+<h1 id="3-Mybatis多表映射"><a href="#3-Mybatis多表映射" class="headerlink" title="3.Mybatis多表映射"></a>3.Mybatis多表映射</h1><h1 id="4-Mybatis动态语句"><a href="#4-Mybatis动态语句" class="headerlink" title="4.Mybatis动态语句"></a>4.Mybatis动态语句</h1><h1 id="5-Mybatis高级扩展"><a href="#5-Mybatis高级扩展" class="headerlink" title="5.Mybatis高级扩展"></a>5.Mybatis高级扩展</h1><h1 id="6-总结"><a href="#6-总结" class="headerlink" title="6.总结"></a>6.总结</h1>
       </div>
     </div>
   </article>
