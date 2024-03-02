@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf8"/>
+    <meta name="viewport" content="initial-scale=1.0, width=device-width"/>
+    <title>
+      
+        SpringMVC | 芋圆明天不困
+      
+    </title>
+    <meta name="description" content=""/>
+    <meta name="keywords" content=""/>
+    
+      <link rel="apple-touch-icon"
+            sizes="180x180"
+            href="/images/apple-touch-icon.png"/>
+    
+    
+      <link rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="/images/favicon-32x32.png"/>
+    
+    
+      <link rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="/images/favicon-16x16.png"/>
+    
+    
+      <link rel="mask-icon"
+            href="/images/logo.svg"
+            color=""/>
+    
+    
+    
+      
+  <style>
+    @font-face {
+        font-family:sourceHanSerif;
+        src: url(/font/regular.ttf);
+        font-weight: regular;
+    }
+  </style>
+
+  <style>
+    @font-face {
+        font-family:sourceHanSerif;
+        src: url(/font/bold.ttf);
+        font-weight: bold;
+    }
+  </style>
+
+
+    
+    <link rel="stylesheet"
+          type="text/css"
+          href='/css/layout.css'/>
+    
+    
+  <link rel="stylesheet" type="text/css" href="/css/post.css" />
+  
+
+  <meta name="generator" content="Hexo 6.3.0"></head>
+  <body>
+    <div class="head">
+      <div class="nav">
+        <a href='/' class="nav-logo">
+          <img alt="logo" height="60px" width="60px" src="/images/logo.svg"/>
+        </a>
+        <input id="navBtn" type="checkbox"/>
+        <div class="nav-menu">
+          
+            
+              <a class="nav-menu-item" href="/CS">技术</a>
+            
+              <a class="nav-menu-item" href="/Others">杂七杂八</a>
+            
+          
+          
+        </div>
+        <label class="nav-btn" for="navBtn"></label>
+      </div>
+    </div>
+    <div class="body">
+      
+  <article class="post-content">
+    <div class="post-inner--toc">
+      <div class="post-content__head">
+        <div class="post-title">SpringMVC</div>
+        <div class="post-info">
+          
+  <a href="/tags/Java/" class="post-tag">#Java</a><a href="/tags/%E5%BC%80%E5%8F%91/" class="post-tag">#开发</a><a href="/tags/SSM/" class="post-tag">#SSM</a>
+
+
+          <span class="post-date">2024-03-02</span>
+        </div>
+      </div>
+      
+        <aside class="toc-outer">
+          <div class="toc-title">目录</div>
+          <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E4%B8%80%E3%80%81SpringMVC%E7%AE%80%E4%BB%8B"><span class="post-toc-text">一、SpringMVC简介</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%BF%AB%E9%80%9F%E4%BD%93%E9%AA%8C"><span class="post-toc-text">快速体验</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E4%BA%8C%E3%80%81SpringMVC%E6%8E%A5%E6%94%B6%E6%95%B0%E6%8D%AE"><span class="post-toc-text">二、SpringMVC接收数据</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E4%B8%89%E3%80%81SpringMVC%E5%93%8D%E5%BA%94%E6%95%B0%E6%8D%AE"><span class="post-toc-text">三、SpringMVC响应数据</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%9B%9B%E3%80%81RESTful%E9%A3%8E%E6%A0%BC%E8%AE%BE%E8%AE%A1%E5%92%8C%E5%AE%9E%E6%88%98"><span class="post-toc-text">四、RESTful风格设计和实战</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E4%BA%94%E3%80%81%E5%85%B6%E4%BB%96%E6%89%A9%E5%B1%95%E5%8F%8A%E6%80%BB%E7%BB%93"><span class="post-toc-text">五、其他扩展及总结</span></a></li></ol>
+          <a href="#" class="toc-top">回到顶部</a>
+        </aside>
+      
+      <div class="post-content__body">
+        
+          <div class="post-gallery">
+            
+          </div>
+        
+        <h1 id="一、SpringMVC简介"><a href="#一、SpringMVC简介" class="headerlink" title="一、SpringMVC简介"></a>一、SpringMVC简介</h1><p>Spring Web MVC是基于Servlet API构建的原始Web框架，从一开始就包含在Spring Framework中。正式名称“Spring Web MVC”来自其源模块的名称（ <code>spring-webmvc</code> ），但它通常被称为“Spring MVC”。<br>（框架是完成了一些封装，专注于业务逻辑）<br><img src="https://dzc2000919.oss-cn-shanghai.aliyuncs.com/zyx_images/202403022057511.png"><br>表述层的功能：<strong>接收前端数据（简化）（形参列表）</strong>，调用业务逻辑，<strong>响应前端数据（简化）（返回值）</strong></p>
+<ul>
+<li><strong>SpringMVC处理请求流程（面试容易问）</strong><br><img src="https://dzc2000919.oss-cn-shanghai.aliyuncs.com/zyx_images/202403022101174.png"><br>DispatcherServlet：处理全部请求<br>handlerMapping：缓存handler的方法和地址<br>handlerAdapter：适配器，简化参数（将原始参数转为成handler需要的参数）;简化数据响应，将handler返回的数据封装为response。<br>视图解析器（简化视图页面的查找）：前缀地址，返回值login，后缀.html，得到一个完整的地址。</li>
+</ul>
+<p><strong>SpringMVC提供的组件理解：</strong></p>
+<ol>
+<li>DispatcherServlet（web.xml配置）: 需要使用web.xml配置使其生效，它是整个流程处理的核心，所有请求都经过它的处理和分发！[ CEO ]</li>
+<li>HandlerMapping（IOC容器配置）:它内部缓存handler(controller方法)和handler访问路径数据，被DispatcherServlet调用，用于查找路径对应的handler！[秘书]</li>
+<li>HandlerAdapter（IOC容器配置）: 它可以处理请求参数和处理响应数据，DispatcherServlet都是通过handlerAdapter间接调用handler，是handler和DispatcherServlet之间的适配器！[经理]</li>
+<li>Handler : handler又称处理器，是Controller类内部的方法简称，是由我们自己定义，用来接收参数，向后调用业务，最终返回响应结果！[打工人]</li>
+<li>ViewResovler （IOC容器配置）: 视图解析器主要作用简化模版视图页面查找的，但是需要注意，前后端分离项目，后端只返回JSON数据，不返回页面，那就不需要视图解析器。[财务]<br>（仅视图解析器不必须，其他的组件必须有）</li>
+</ol>
+<h2 id="快速体验"><a href="#快速体验" class="headerlink" title="快速体验"></a>快速体验</h2><h1 id="二、SpringMVC接收数据"><a href="#二、SpringMVC接收数据" class="headerlink" title="二、SpringMVC接收数据"></a>二、SpringMVC接收数据</h1><h1 id="三、SpringMVC响应数据"><a href="#三、SpringMVC响应数据" class="headerlink" title="三、SpringMVC响应数据"></a>三、SpringMVC响应数据</h1><h1 id="四、RESTful风格设计和实战"><a href="#四、RESTful风格设计和实战" class="headerlink" title="四、RESTful风格设计和实战"></a>四、RESTful风格设计和实战</h1><h1 id="五、其他扩展及总结"><a href="#五、其他扩展及总结" class="headerlink" title="五、其他扩展及总结"></a>五、其他扩展及总结</h1>
+      </div>
+    </div>
+  </article>
+  <div class="post__foot">
+    
+    <div class="post-nav">
+  
+    <div class="post-nav-item-left"></div>
+  
+  <div class="vhr"></div>
+  
+    <a class="post-nav-item-right" href="/2024/02/22/Mybatis/">
+      <div class="text-align">
+        <span class="text-small">下一篇</span>
+        <svg t="1670570876164"
+             class="icon"
+             viewBox="0 0 1024 1024"
+             transform="scale(-1,-1)"
+             width="16"
+             height="16">
+          <path d="M384 512L731.733333 202.666667c17.066667-14.933333 19.2-42.666667 4.266667-59.733334-14.933333-17.066667-42.666667-19.2-59.733333-4.266666l-384 341.333333c-10.666667 8.533333-14.933333 19.2-14.933334 32s4.266667 23.466667 14.933334 32l384 341.333333c8.533333 6.4 19.2 10.666667 27.733333 10.666667 12.8 0 23.466667-4.266667 32-14.933333 14.933333-17.066667 14.933333-44.8-4.266667-59.733334L384 512z" p-id="14596"/>
+        </svg>
+      </div>
+      Mybatis
+    </a>
+  
+</div>
+
+    
+      <div class="related-post">
+  <div class="related__head">
+  <a href="/tags/Java/" class="post-tag">#Java</a><a href="/tags/%E5%BC%80%E5%8F%91/" class="post-tag">#开发</a><a href="/tags/SSM/" class="post-tag">#SSM</a>
+
+</div>
+  <div class="realated__body">
+    
+      DEBUG: 请安装插件 <a target="_blank" rel="noopener" href="https://github.com/tea3/hexo-related-popular-posts">hexo-related-popular-posts</a> 或关闭 related_post 配置!
+    
+  </div>
+</div>
+
+    
+    
+  </div>
+
+    </div>
+    <div class="foot">
+      <div class="foot-inner">
+        <div class="foot__head">
+          
+            <div class="foot-line">
+              
+                <div class="matts">若</div>
+              
+                <div class="matts">无</div>
+              
+                <div class="matts">闲</div>
+              
+                <div class="matts">事</div>
+              
+                <div class="matts">挂</div>
+              
+                <div class="matts">心</div>
+              
+                <div class="matts">头</div>
+              
+            </div>
+          
+            <div class="foot-line">
+              
+                <div class="matts">便</div>
+              
+                <div class="matts">是</div>
+              
+                <div class="matts">人</div>
+              
+                <div class="matts">间</div>
+              
+                <div class="matts">好</div>
+              
+                <div class="matts">时</div>
+              
+                <div class="matts">节</div>
+              
+            </div>
+          
+        </div>
+        <div class="foot__body">
+          
+            <div class="foot-item">
+              <div class="foot-item__head">朋友</div>
+              <div class="foot-item__body">
+                
+                  <div class="text">
+                    <img alt="link" height="20px" width="20px" src="/images/icon/icon-link.svg"/>
+                    <a class="foot-link" target="_blank" rel="noopener" href="https://carriemint.github.io">芋圆的主页</a>
+                  </div>
+                
+                <div class="text">
+                  <img alt="link" height="20px" width="20px" src="/images/icon/icon-link+.svg"/>
+                  <a class="foot-link"
+                     href="mailto:863162796@qq.com?subject=%E7%94%B3%E8%AF%B7%20Hozen.site%20%E7%9A%84%E5%8F%8B%E9%93%BE%E4%BD%8D%E7%BD%AE">
+                  申请友链</a>
+                </div>
+              </div>
+            </div>
+          
+          
+            <div class="foot-item">
+              <div class="foot-item__head">账号</div>
+              <div class="foot-item__body">
+                
+                  <div class="text">
+                    <img alt="link" height="20px" width="20px" src="/images/logo-github.svg"/>
+                    <a class="foot-link" target="_blank" rel="noopener" href="https://github.com/carriemint">carriemint</a>
+                  </div>
+                
+              </div>
+            </div>
+          
+          <div class="foot-item">
+            <div class="foot-item__head">联系</div>
+            <div class="foot-item__body">
+              <div class="text">
+                <img alt="link" height="20px" width="20px" src="/images/icon/icon-email.svg"/>
+                <a class="foot-link" href="mailto:863162796@qq.com">863162796@qq.com</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="copyright">
+          <a href="http://example.com">芋圆明天不困</a> &nbsp;|&nbsp;由&nbsp;<a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>&nbsp;及&nbsp;
+          <svg width="20" height="20" viewBox="0 0 725 725">
+            <path fill-rule="evenodd" fill="rgb(221, 221, 221)" d="M145.870,236.632 L396.955,103.578 L431.292,419.44 L156.600,522.53 L145.870,236.632 Z"/>
+            <path fill-rule="evenodd" fill="rgb(159, 159, 159)" d="M396.955,103.578 L564.345,234.486 L611.558,513.469 L431.292,419.44 L396.955,103.578 Z"/>
+            <path fill-rule="evenodd" fill="rgb(0, 0, 0)" d="M431.292,419.44 L611.558,513.469 L358.327,595.18 L156.600,522.53 L431.292,419.44 Z"/>
+          </svg>
+          <a target="_blank" rel="noopener" href="https://github.com/hooozen/hexo-theme-tranquility">致远</a>&nbsp;驱动
+        </div>
+      </div>
+    </div>
+    
+    
+  
+
+  </body>
+</html>
