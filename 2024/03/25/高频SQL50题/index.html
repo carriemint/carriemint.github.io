@@ -85,17 +85,23 @@
     <div class="body">
       
   <article class="post-content">
-    <div class="post-inner">
+    <div class="post-inner--toc">
       <div class="post-content__head">
         <div class="post-title">高频SQL50题</div>
         <div class="post-info">
           
-  
+  <a href="/tags/Java/" class="post-tag">#Java</a><a href="/tags/LeetCode/" class="post-tag">#LeetCode</a><a href="/tags/SQL/" class="post-tag">#SQL</a>
 
 
           <span class="post-date">2024-03-25</span>
         </div>
       </div>
+      
+        <aside class="toc-outer">
+          <div class="toc-title">目录</div>
+          <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="post-toc-text">基础知识</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E8%BF%9E%E6%8E%A5%E6%9F%A5%E8%AF%A2"><span class="post-toc-text">连接查询</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1378-left-join-on"><span class="post-toc-text">1378 left join on</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1935-%E7%A1%AE%E8%AE%A4%E7%8E%87"><span class="post-toc-text">1935 确认率</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%88%86%E7%BB%84"><span class="post-toc-text">分组</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1193"><span class="post-toc-text">1193</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#570"><span class="post-toc-text">570</span></a></li></ol></li></ol>
+          <a href="#" class="toc-top">回到顶部</a>
+        </aside>
       
       <div class="post-content__body">
         
@@ -103,7 +109,25 @@
             
           </div>
         
-        
+        <h1 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h1><p>where 条件筛选的是行；having 条件筛选的是分组；groupby（group by month,country，可以使用多个条件进行分组。）<br>聚合函数：AVG(c.action&#x3D;’confirmed’)，count，sum<br>IFNULL（xxx，0）<br>ROUND（xxx，2）：四舍五入保留两位。</p>
+<ul>
+<li>date_format:<code>date_format(trans_date,&#39;%Y-%m&#39;)</code></li>
+</ul>
+<p>having中能用的是：常数 、 聚合函数（如count、sum、） 和 聚合键（group by中的列名）<br>as 取别名<br><img src="https://dzc2000919.oss-cn-shanghai.aliyuncs.com/zyx_images/202403251901633.png"></p>
+<ul>
+<li>count<br>如果不想将 NULL 值包含在内，就使用 COUNT(column)； 如果想将 NULL 值包含在内，就使用 COUNT(*)（因为它计 算的不是列值个数，而是行数）</li>
+</ul>
+<h1 id="连接查询"><a href="#连接查询" class="headerlink" title="连接查询"></a>连接查询</h1><h2 id="1378-left-join-on"><a href="#1378-left-join-on" class="headerlink" title="1378 left join on"></a>1378 left join on</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> unique_id,name <span class="hljs-keyword">from</span> Employees <span class="hljs-keyword">left</span> <span class="hljs-keyword">join</span> EmployeeUNI <span class="hljs-keyword">on</span> Employees.id<span class="hljs-operator">=</span>EmployeeUNI.id<br></code></pre></td></tr></table></figure>
+
+<h2 id="1935-确认率"><a href="#1935-确认率" class="headerlink" title="1935 确认率"></a>1935 确认率</h2><p><code>AVG(case when(action=&#39;confirmed&#39;) then 1 else 0 end)</code><br>可以简写为<code>AVG(c.action=&#39;confirmed&#39;)</code><br>或者<code>sum(if(c.action = &#39;confirmed&#39;, 1, 0) / count(*)</code></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> Signups.user_id,round(IFNULL(<span class="hljs-built_in">avg</span>(Confirmations.action<span class="hljs-operator">=</span><span class="hljs-string">&#x27;confirmed&#x27;</span>),<span class="hljs-number">0</span>),<span class="hljs-number">2</span>) <span class="hljs-keyword">as</span> confirmation_rate <span class="hljs-keyword">from</span> Signups <span class="hljs-keyword">left</span> <span class="hljs-keyword">join</span> Confirmations <span class="hljs-keyword">on</span> Signups.user_id<span class="hljs-operator">=</span>Confirmations.user_id <span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> Signups.user_id<br></code></pre></td></tr></table></figure>
+
+
+<h1 id="分组"><a href="#分组" class="headerlink" title="分组"></a>分组</h1><h2 id="1193"><a href="#1193" class="headerlink" title="1193"></a>1193</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> date_format(trans_date,<span class="hljs-string">&#x27;%Y-%m&#x27;</span>)<span class="hljs-keyword">as</span> <span class="hljs-keyword">month</span>,country,<span class="hljs-built_in">count</span>(id) <span class="hljs-keyword">as</span> trans_count,<span class="hljs-built_in">sum</span>(state<span class="hljs-operator">=</span>&quot;approved&quot;) <span class="hljs-keyword">as</span> approved_count,<span class="hljs-built_in">sum</span>(amount) <span class="hljs-keyword">as</span> trans_total_amount,<span class="hljs-built_in">sum</span>(if(state<span class="hljs-operator">=</span>&quot;approved&quot;,amount,<span class="hljs-number">0</span>)) <span class="hljs-keyword">as</span> approved_total_amount <span class="hljs-keyword">from</span> Transactions <span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> <span class="hljs-keyword">month</span>,country<br></code></pre></td></tr></table></figure>
+
+<h2 id="570"><a href="#570" class="headerlink" title="570"></a>570</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> Manager.name <span class="hljs-keyword">from</span> Employee <span class="hljs-keyword">as</span> Manager <span class="hljs-keyword">join</span> Employee <span class="hljs-keyword">as</span> Worker <span class="hljs-keyword">on</span> Manager.id<span class="hljs-operator">=</span>Worker.managerId <span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> Manager.id <span class="hljs-keyword">having</span> <span class="hljs-built_in">count</span>(Worker.id)<span class="hljs-operator">&gt;=</span><span class="hljs-number">5</span><br></code></pre></td></tr></table></figure>
+<p>一个表没有姓名，需要连接该相同的表，一个作为经理表，一个作为员工表然后分组。</p>
+
       </div>
     </div>
   </article>
@@ -135,7 +159,7 @@
     
       <div class="related-post">
   <div class="related__head">
-  
+  <a href="/tags/Java/" class="post-tag">#Java</a><a href="/tags/LeetCode/" class="post-tag">#LeetCode</a><a href="/tags/SQL/" class="post-tag">#SQL</a>
 
 </div>
   <div class="realated__body">
