@@ -99,7 +99,7 @@
       
         <aside class="toc-outer">
           <div class="toc-title">目录</div>
-          <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="post-toc-text">基础知识</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E8%BF%9E%E6%8E%A5%E6%9F%A5%E8%AF%A2"><span class="post-toc-text">连接查询</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1378-left-join-on"><span class="post-toc-text">1378 left join on</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1935-%E7%A1%AE%E8%AE%A4%E7%8E%87"><span class="post-toc-text">1935 确认率</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%88%86%E7%BB%84"><span class="post-toc-text">分组</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1193"><span class="post-toc-text">1193</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#570"><span class="post-toc-text">570</span></a></li></ol></li></ol>
+          <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="post-toc-text">基础知识</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E8%BF%9E%E6%8E%A5%E6%9F%A5%E8%AF%A2"><span class="post-toc-text">连接查询</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1378-left-join-on"><span class="post-toc-text">1378 left join on</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1935-%E7%A1%AE%E8%AE%A4%E7%8E%87"><span class="post-toc-text">1935 确认率</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%88%86%E7%BB%84"><span class="post-toc-text">分组</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1193"><span class="post-toc-text">1193</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#570"><span class="post-toc-text">570</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1174-%E5%8D%B3%E6%97%B6%E9%A3%9F%E7%89%A9%E9%85%8D%E9%80%81"><span class="post-toc-text">1174.即时食物配送</span></a></li></ol></li></ol>
           <a href="#" class="toc-top">回到顶部</a>
         </aside>
       
@@ -109,11 +109,13 @@
             
           </div>
         
-        <h1 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h1><p>where 条件筛选的是行；having 条件筛选的是分组；groupby（group by month,country，可以使用多个条件进行分组。）<br>聚合函数：AVG(c.action&#x3D;’confirmed’)，count，sum<br>IFNULL（xxx，0）<br>ROUND（xxx，2）：四舍五入保留两位。</p>
+        <h1 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h1><p>where 条件筛选的是行；having 条件筛选的是分组；groupby（group by month,country，可以使用多个条件进行分组。）<br>聚合函数(记得重命名！！！！)：AVG(c.action&#x3D;’confirmed’)，count，sum<br>IFNULL（xxx，0）<br>ROUND（xxx，2）：四舍五入保留两位。</p>
 <ul>
 <li>date_format:<code>date_format(trans_date,&#39;%Y-%m&#39;)</code></li>
 </ul>
-<p>having中能用的是：常数 、 聚合函数（如count、sum、） 和 聚合键（group by中的列名）<br>as 取别名<br><img src="https://dzc2000919.oss-cn-shanghai.aliyuncs.com/zyx_images/202403251901633.png"></p>
+<p><strong>distinct</strong>去重复：<code>select distinct customer_id from Delivery</code></p>
+<p><strong>round(xxx,2)</strong>:保留小数点后2位。</p>
+<p>having中能用的是：常数 、 聚合函数（如count、sum、min、max） 和 聚合键（group by中的列名）<br>as 取别名<br><img src="https://dzc2000919.oss-cn-shanghai.aliyuncs.com/zyx_images/202403251901633.png"></p>
 <ul>
 <li>count<br>如果不想将 NULL 值包含在内，就使用 COUNT(column)； 如果想将 NULL 值包含在内，就使用 COUNT(*)（因为它计 算的不是列值个数，而是行数）</li>
 </ul>
@@ -127,7 +129,8 @@
 
 <h2 id="570"><a href="#570" class="headerlink" title="570"></a>570</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> Manager.name <span class="hljs-keyword">from</span> Employee <span class="hljs-keyword">as</span> Manager <span class="hljs-keyword">join</span> Employee <span class="hljs-keyword">as</span> Worker <span class="hljs-keyword">on</span> Manager.id<span class="hljs-operator">=</span>Worker.managerId <span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> Manager.id <span class="hljs-keyword">having</span> <span class="hljs-built_in">count</span>(Worker.id)<span class="hljs-operator">&gt;=</span><span class="hljs-number">5</span><br></code></pre></td></tr></table></figure>
 <p>一个表没有姓名，需要连接该相同的表，一个作为经理表，一个作为员工表然后分组。</p>
-
+<h2 id="1174-即时食物配送"><a href="#1174-即时食物配送" class="headerlink" title="1174.即时食物配送"></a>1174.即时食物配送</h2><p>先筛选出用户的首次订单，然后再选判断是不是即时的。<br>select count（*） from （xxxxxx）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java">select <span class="hljs-title function_">round</span><span class="hljs-params">(sum(<span class="hljs-keyword">if</span>(t.order_date=customer_pref_delivery_date,<span class="hljs-number">1</span>,<span class="hljs-number">0</span>)</span>)*<span class="hljs-number">100</span>/(select <span class="hljs-title function_">count</span><span class="hljs-params">(*)</span> from (select distinct customer_id from Delivery) t1),<span class="hljs-number">2</span>) as immediate_percentage <span class="hljs-title function_">from</span> <br><span class="hljs-params">(select customer_id,min(order_date)</span> as order_date from<br> Delivery group by customer_id) as t, Delivery where t.customer_id=Delivery.customer_id and t.order_date=Delivery.order_date<br></code></pre></td></tr></table></figure>
       </div>
     </div>
   </article>
